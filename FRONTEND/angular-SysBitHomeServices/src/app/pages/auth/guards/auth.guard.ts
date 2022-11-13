@@ -1,3 +1,4 @@
+
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
 import { USER_STORAGE_KEY } from "@shared/constants/constant";
@@ -7,7 +8,6 @@ export class AuthGuard implements CanActivate {
   constructor(private readonly router: Router) { }
 
   canActivate(): boolean {
-    //Obtener el token
     if (localStorage.getItem(USER_STORAGE_KEY)) {
       this.router.navigate(['/home']);
       return false;
