@@ -3,11 +3,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-SysBitHomeServices": {
+    "supabaseAuth": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -17,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-sys-bit-home-services",
+            "outputPath": "dist/supabaseAuth",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,13 +73,16 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "port": 4200
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-SysBitHomeServices:build:production"
+              "browserTarget": "supabaseAuth:build:production"
             },
             "development": {
-              "browserTarget": "angular-SysBitHomeServices:build:development"
+              "browserTarget": "supabaseAuth:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-SysBitHomeServices:build"
+            "browserTarget": "supabaseAuth:build"
           }
         },
         "test": {
@@ -104,11 +110,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
+  "defaultProject": "supabaseAuth",
   "cli": {
-    "analytics": "f3a0b841-8a23-4e8e-a0bb-5e1c7a88cf2e"
+    "analytics": false,
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }

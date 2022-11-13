@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Data } from "@angular/router";
 import { environment } from "@env/environment";
 import { USER_STORAGE_KEY } from "@shared/constants/constant";
-import { createClient, Session, SupabaseClient, User,SignInWithPasswordCredentials, SignUpWithPasswordCredentials, AuthError} from "@supabase/supabase-js";
+import { ApiError, createClient, Session, SupabaseClient, User, UserCredentials } from "@supabase/supabase-js";
 import { BehaviorSubject, Observable } from "rxjs";
 
-type supabaseResponse = Data | Session | AuthError |null;
+type supabaseResponse = User | Session | ApiError | null;
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -20,30 +19,30 @@ export class AuthService {
   get user$(): Observable<User | null> {
     return this.userSubject.asObservable();
   }
-  async signIn(credentials: SignInWithPasswordCredentials ): Promise<supabaseResponse> {
+
+  async signIn(credentials: UserCredentials): Promise<supabaseResponse> {
     try {
-      const { data, error, ...rest } = await this.supabaseClient.auth.signInWithPassword(credentials);
+      const { user, error, ...rest } = await this.supabaseClient.auth.signIn(credentials);
       this.setUser();
-      return { data, error }
+      return error ? error : user;
     } catch (error) {
       console.log(error);
-      return error as AuthError;
+      return error as ApiError;
     }
   }
 
-
-  async signUp(credentials: SignUpWithPasswordCredentials): Promise<supabaseResponse> {
+  async signUp(credentials: UserCredentials): Promise<supabaseResponse> {
     try {
-      const { data, error, ...rest } = await this.supabaseClient.auth.signUp(credentials);
+      const { user, error, ...rest } = await this.supabaseClient.auth.signUp(credentials);
       this.setUser();
-      return { data, error }
+      return error ? error : user;
     } catch (error) {
       console.log(error);
-      return error as AuthError;
+      return error as ApiError;
     }
   }
 
-  signOut(): Promise<{ error: AuthError | null }> {
+  signOut(): Promise<{ error: ApiError | null }> {
     this.userSubject.next(null);
     return this.supabaseClient.auth.signOut();
   }
