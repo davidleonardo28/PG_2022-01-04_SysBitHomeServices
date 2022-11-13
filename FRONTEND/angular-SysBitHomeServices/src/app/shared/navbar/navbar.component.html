@@ -1,0 +1,113 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <a
+        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+        >SysBitHomeServices
+        <svg
+          class="bi me-2"
+          width="40"
+          height="32"
+          role="img"
+          aria-label="Bootstrap"
+        >
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+      <ng-container *ngIf="(user$ | async) === null; else logOutTemplate">
+        <div class="text-end">
+          <button
+            type="button"
+            class="btn btn-outline-light me-2"
+            [routerLink]="['/sign-in']"
+            routerLinkActive="router-link-active"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning"
+            [routerLink]="['/sign-up']"
+            routerLinkActive="router-link-active me-2"
+          >
+            Registrarse
+          </button>
+        </div>
+      </ng-container>
+      <ng-template #logOutTemplate>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onLogout()"
+          [routerLink]="['/sign-in']"
+          routerLinkActive="router-link-active me-2"
+        >
+          Cerrar Sesión
+        </button>
+        <ul
+          class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+        >
+          <li>
+            <a
+              class="nav-link px-2 text-white"
+              aria-current="page"
+              [routerLink]="['/']"
+              routerLinkActive="router-link-active"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              class="nav-link px-2 text-white"
+              [routerLink]="['/']"
+              routerLinkActive="router-link-active"
+              >Localización</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link px-2 text-white">Acerca de Nosotros</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-2 text-white">Notificaciónes</a>
+          </li>
+        </ul>
+
+        <div class="dropdown text-end">
+          <a
+            href="#"
+            class="d-block link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://github.com/mdo.png"
+              alt="mdo"
+              width="32"
+              height="32"
+              class="rounded-circle"
+            />
+          </a>
+        </div>
+      </ng-template>
+    </div>
+    </div>
+</header>
+
+<!--
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">&copy; 2022 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+    </ul>
+  </footer> -->
