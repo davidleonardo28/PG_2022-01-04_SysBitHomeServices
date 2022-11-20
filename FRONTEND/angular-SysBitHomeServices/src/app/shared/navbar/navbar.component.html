@@ -67,10 +67,23 @@
             >
           </li>
           <li>
-            <a href="#" class="nav-link px-2 text-white">Acerca de Nosotros</a>
+            <a
+              [routerLink]="['/about']"
+              routerLinkActive="router-link-active me-2"
+              class="nav-link px-2 text-white"
+              >Acerca de Nosotros</a
+            >
           </li>
           <li>
             <a href="#" class="nav-link px-2 text-white">Notificaciónes</a>
+          </li>
+          <li>
+            <a
+              [routerLink]="['/registro']"
+              routerLinkActive="router-link-active me-2"
+              class="nav-link px-2 text-white"
+              >Registro</a
+            >
           </li>
         </ul>
 
@@ -93,6 +106,5 @@
         </div>
       </ng-template>
     </div>
-    </div>
+  </div>
 </header>
-
