@@ -11,6 +11,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTooltipModule,MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    PdfViewerModule,
+    NgxExtendedPdfViewerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
