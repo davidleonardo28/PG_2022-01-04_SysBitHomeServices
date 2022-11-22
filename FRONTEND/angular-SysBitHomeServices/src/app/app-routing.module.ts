@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
   { path: 'about', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule) },
   {path: 'registro', loadChildren: () => import('./pages/auth/registro/registro-module').then(m => m.RegistroModule) },
+  {path: 'geoserver', loadChildren: () => import('./pages/geoserver/geoserver.module').then(m => m.GeoserverModule) },
 
   {
     path: 'sign-in',
