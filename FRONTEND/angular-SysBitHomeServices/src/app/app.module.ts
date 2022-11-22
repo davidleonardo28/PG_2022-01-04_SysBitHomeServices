@@ -19,6 +19,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatGridListModule,
     MatTooltipModule,
     MatSelectModule,
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule,
   ],
   providers: [MatDatepickerModule,
     MatNativeDateModule ],

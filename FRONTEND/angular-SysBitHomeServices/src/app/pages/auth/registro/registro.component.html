@@ -79,7 +79,8 @@
 
         <mat-form-field class="example-full-width1" appearance="fill">
           <mat-label>Ingresar Foto Documento </mat-label>
-          <input matInput placeholder="Ingresar Foto Documento" />
+          <input matInput disabled placeholder="" />
+          <input (change)="onFileSelected()" type="file" id="file">
         </mat-form-field>
       </p>
     </div>
@@ -95,3 +96,37 @@
     </div>
   </form>
 </mat-card>
+
+<!-- <ngx-extended-pdf-viewer
+    [src]="'src'"
+    (currentZoomFactor)="updateZoomFactor($event)"
+    [height]="'90vh'"
+    [useBrowserLocale]="true"
+    [(zoom)]="zoomSetting"
+    [showZoomButtons]="true"
+    [minZoom]="minZoom"
+    [maxZoom]="maxZoom"
+    [zoomLevels]="zoomLevels"
+    [enablePinchOnMobile]="enablePinchOnMobile"
+    style="width: 100%; height: 600px;">
+</ngx-extended-pdf-viewer> -->
+
+<!-- <mat-drawer-content> -->
+<pdf-viewer
+      [src]="src"
+      [rotation]="0"
+      [original-size]="false"
+      [show-all]="true"
+      [fit-to-page]="false"
+      [zoom]="1"
+      [zoom-scale]="'page-width'"
+      [stick-to-page]="false"
+      [render-text]="true"
+      [external-link-target]="'blank'"
+      [autoresize]="true"
+      [show-borders]="false"
+      style="width: 100%; height: 600px;"
+    ></pdf-viewer>
+  <!-- </mat-drawer-content> -->
+
+
