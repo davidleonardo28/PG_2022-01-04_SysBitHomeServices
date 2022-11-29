@@ -1,5 +1,5 @@
 .boton1{
-  
+
     text-align: center;
     border-radius: 6px;
     padding-top: 10px;
@@ -15,6 +15,7 @@
     font-family: "Trebuchet MS"/*"Trebuchet MS""*/;
     font-size: 14px;
     width: 130px;
+    gap:2rem;
 
 }
 
@@ -23,12 +24,12 @@
 .boton1:hover {
     background-position: right;
     color: rgb(13, 19, 202);
-   
+
 }
 
 
 .boton2{
-  
+
     text-align: center;
     border-radius: 6px;
     padding-top: 10px;
@@ -50,7 +51,7 @@
 .boton2:hover {
     background-position: left;
     color: rgb(13, 19, 202);
-   
+
 }
 
 .contenedorb{
@@ -59,7 +60,7 @@
     text-align: left;
     display:block;
     float:left;
-    
+
 }
 
 .encabezado{
