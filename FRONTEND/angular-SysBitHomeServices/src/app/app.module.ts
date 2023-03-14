@@ -1,3 +1,4 @@
+import { MapasRoutingModule } from './pages/mapas/mapas-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NavbarModule } from '@shared/navbar/navbar.module';
@@ -51,6 +52,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatSelectModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
+    MapasRoutingModule,
   ],
   providers: [MatDatepickerModule,
     MatNativeDateModule ],

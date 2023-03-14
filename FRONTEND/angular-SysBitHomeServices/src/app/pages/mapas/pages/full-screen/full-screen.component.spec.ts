@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeoserverComponent } from './geoserver.component';
+import { FullScreenComponent } from './full-screen.component';
 
-describe('GeoserverComponent', () => {
-  let component: GeoserverComponent;
-  let fixture: ComponentFixture<GeoserverComponent>;
+describe('FullScreenComponent', () => {
+  let component: FullScreenComponent;
+  let fixture: ComponentFixture<FullScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GeoserverComponent ]
+      declarations: [ FullScreenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeoserverComponent);
+    fixture = TestBed.createComponent(FullScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
