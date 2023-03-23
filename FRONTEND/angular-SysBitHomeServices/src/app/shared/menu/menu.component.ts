@@ -30,7 +30,7 @@ export class MenuComponent {
     },
     {
       ruta: '/localizacion/propiedades',
-      nombre: 'Servicios Personalizados'
+      nombre: 'Servicios en Curso'
     },
   ];
 }
