@@ -1,132 +1,35 @@
-<h1><img src="../../../../assets/img/Logo.jpeg" /></h1>
-<!-- <h1>
-  <img src="../../../../assets/img/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"
-  width="200" height="250">
-</h1> -->
-
-<mat-card class="card sombra">
-  <h1>Registro de Usuarios</h1>
-  <form class="form-Agregar">
-    <div class="flexbox-container">
-      <p>
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Primer Nombre </mat-label>
-          <input matInput placeholder="Ingresa tu Primer Nombre" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Primer Apellido </mat-label>
-          <input matInput placeholder="Ingresa tu Primer Apellido" />
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Email (disabled)</mat-label>
-          <input matInput disabled value="Email" />
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Contraseña (disabled)</mat-label>
-          <input matInput disabled value="Contraseña" />
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Tipo de Documento </mat-label>
-          <mat-select name="documento">
-            <mat-option
-              *ngFor="let documento of documento"
-              [value]="documento.value"
-            >
-              {{ documento.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Fecha de Nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker ></mat-datepicker>
-        </mat-form-field>
-      </p>
-      <!-- Parte 2 Formulario -->
-      <p>
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Segundo Nombre </mat-label>
-          <input matInput placeholder="Ingresa tu Segundo Nombre" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Segundo Apellido </mat-label>
-          <input matInput placeholder="Ingresa tu Segundo Apellido" />
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Telephone</mat-label>
-          <span matPrefix>+57 &nbsp;</span>
-          <input type="tel" matInput placeholder="Ingresa tu Número de teléfono">
-          <mat-icon matSuffix>mode_edit</mat-icon>
-        </mat-form-field>
+<div class="container">
 
 
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Verificar Contraseña (disabled)</mat-label>
-          <input matInput disabled value="Verificar Contraseña" />
-        </mat-form-field>
+  <div class="row gx-8 top">
 
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>N° Documento</mat-label>
-          <input matInput placeholder="N° Documento">
-        </mat-form-field>
-
-
-        <mat-form-field class="example-full-width1" appearance="fill">
-          <mat-label>Ingresar Foto Documento </mat-label>
-          <input matInput disabled placeholder="" />
-          <input (change)="onFileSelected()" type="file" id="file">
-        </mat-form-field>
-      </p>
-    </div>
-
-    <div class="design-button">
-      <input
-        class="boton1"
-        type="submit"
-        value="Registrar"
-        (click)="guardar()"
-      />
-      <!-- <a href="http://localhost:4200/admin"><input class="boton1" type="button" value="Volver al menú"></a> -->
-    </div>
-  </form>
-</mat-card>
-
-<!-- <ngx-extended-pdf-viewer
-    [src]="'src'"
-    (currentZoomFactor)="updateZoomFactor($event)"
-    [height]="'90vh'"
-    [useBrowserLocale]="true"
-    [(zoom)]="zoomSetting"
-    [showZoomButtons]="true"
-    [minZoom]="minZoom"
-    [maxZoom]="maxZoom"
-    [zoomLevels]="zoomLevels"
-    [enablePinchOnMobile]="enablePinchOnMobile"
-    style="width: 100%; height: 600px;">
-</ngx-extended-pdf-viewer> -->
-
-<!-- <mat-drawer-content> -->
-<pdf-viewer
-      [src]="src"
-      [rotation]="0"
-      [original-size]="false"
-      [show-all]="true"
-      [fit-to-page]="false"
-      [zoom]="1"
-      [zoom-scale]="'page-width'"
-      [stick-to-page]="false"
-      [render-text]="true"
-      [external-link-target]="'blank'"
-      [autoresize]="true"
-      [show-borders]="false"
-      style="width: 100%; height: 600px;"
-    ></pdf-viewer>
-  <!-- </mat-drawer-content> -->
-
-
+      <div class="col text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <a href="contratantes/registro">
+              <div id="colum1" class="card1">
+                  <div class="details">
+                      <div class="center">
+                          <h1>Contratante<br></h1>
+                          <span>
+                              <p>!Consigue lo que necesitas para tu hogar!</p>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </a>
+      </div>
+      <div class="col text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <div id="colum2" class="card2">
+              <a href="colaboradores/registro">
+                  <div class="details">
+                      <div class="center">
+                          <h1>Colaborador<br></h1>
+                          <span>
+                              <p>!Oferta servicios laborales para el hogar!</p>
+                          </span>
+                      </div>
+                  </div>
+              </a>
+          </div>
+      </div>
+  </div>
+</div>

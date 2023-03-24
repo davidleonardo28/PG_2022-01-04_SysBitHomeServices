@@ -1,0 +1,82 @@
+<div class="container" style="margin-left: 10%;
+margin-top: 2.5%;">
+<div class="card bg-white text-dark" style="height:30rem;width: 25cm;">
+    <div class="card-header">Registrar Contratantes </div>
+    <div class="card-body">
+        <form>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
+                        [(ngModel)]="contratante.nomUce" name="nomUce" >
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido"
+                        [(ngModel)]="contratante.apeUce" name="apeUce">
+                </div>
+            </div>
+            <div class="row"  style="height:2cm;">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Correo" aria-label="Correo"
+                        [(ngModel)]="contratante.correoUce" name="correoUce">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario"
+                        [(ngModel)]="contratante.usuarioUce" name="usuarioUce">
+                </div>
+            </div>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña"
+                        [(ngModel)]="contratante.claveUce" name="claveUce">
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="Verificar Contraseña"
+                        aria-label="Verificar Contraseña" [(ngModel)]="contratante.claveUce" name="claveUce">
+                </div>
+            </div>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Telefono" aria-label="Telefono"
+                        [(ngModel)]="contratante.telefonoUce" name="telefonoUce">
+                </div>
+            </div>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="date" data-date-format="aaaa/mm/dd" class="form-control" placeholder="Fecha de nacimiento"
+                        aria-label="Fecha de nacimiento" [(ngModel)]="contratante.fechaNacimientoUce"
+                        name="fechaNacimientoUce">
+                </div>
+                <div class="col">
+                    <div class="col">
+                    <select class="form-select" [(ngModel)]="contratante.tipoDocContratantes" name="tipoDoc" aria-label="Default select example">
+                            <option [ngValue]="undefined">Tipo de documento</option>
+                            <option [ngValue]="tipoDocumento" *ngFor="let tipoDocumento of tipoDocumentos">{{tipoDocumento.nombreTipoDocumento}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Numero de documento"
+                        aria-label="Numero de documento" [(ngModel)]="contratante.numDocumentoUce"
+                        name="numDocumentoUcr">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="formFile" class="form-label">Seguridad Social</label>
+                        <input class="form-control" type="file" id="formFile" (change)="cargaArchivos($event)">
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!contratante.codUce else elseBlock">Registrar</button>
+
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)="update()">Editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

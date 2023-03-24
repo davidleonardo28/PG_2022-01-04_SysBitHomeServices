@@ -1,0 +1,84 @@
+<div class="container" style="margin-left: 10%;
+margin-top: 2.5%;">
+<div class="card bg-white text-dark" style="height:30rem;width: 25cm;">
+    <div class="card-header">Registrar Colaborador</div>
+    <div class="card-body">
+        <form (ngSubmit)="create()">
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
+                        [(ngModel)]="colaborador.nomUcr" name="nomUcr" >
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido"
+                        [(ngModel)]="colaborador.apeUcr" name="apeUcr">
+                </div>
+            </div>
+            <div class="row"  style="height:2cm;">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Correo" aria-label="Correo"
+                        [(ngModel)]="colaborador.correoUcr" name="correoUcr">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario"
+                        [(ngModel)]="colaborador.usuarioUcr" name="usuarioUcr">
+                </div>
+            </div>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña"
+                        [(ngModel)]="colaborador.claveUcr" name="claveUcr">
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="Verificar Contraseña"
+                        aria-label="Verificar Contraseña" [(ngModel)]="colaborador.claveUcr" name="claveUcr">
+                </div>
+            </div>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Telefono" aria-label="Telefono"
+                        [(ngModel)]="colaborador.telefonoUcr" name="telefonoUcr">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Cuenta Bancaria" aria-label="Cuenta Bancaria"
+                        [(ngModel)]="colaborador.cuentaBancaria" name="cuentaBancaria">
+                </div>
+            </div>
+            <div class="row" style="height:2cm;">
+                <div class="col">
+                    <input type="date" data-date-format="aaaa/mm/dd" class="form-control" placeholder="Fecha de nacimiento"
+                        aria-label="Fecha de nacimiento" [(ngModel)]="colaborador.fechaNacimientoUcr"
+                        name="fechaNacimientoUcr">
+                </div>
+                <div class="col">
+                <select class="form-select" [(ngModel)]="colaborador.tipoDoc" name="tipoDoc" aria-label="Default select example">
+                    <option [ngValue]="undefined">Tipo de documento</option>
+                    <option [ngValue]="tipoDocumento" *ngFor="let tipoDocumento of tipoDocumentos">{{tipoDocumento.nombreTipoDocumento}}</option>
+                </select>
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Numero de documento"
+                        aria-label="Numero de documento" [(ngModel)]="colaborador.numDocumentoUcr"
+                        name="numDocumentoUcr">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="formFile" class="form-label">Seguridad Social</label>
+                        <input class="form-control" type="file" id="formFile" (change)="cargaArchivosDocumentos($event)">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!colaborador.codUcr else elseBlock">Registrar</button>
+
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)="update()">Editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

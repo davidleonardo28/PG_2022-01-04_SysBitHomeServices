@@ -1,0 +1,41 @@
+.footer{
+
+  background-color: #ece9e9;
+  border-top: .05rem solid #e5e5e5;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-top: 6%;
+  width: 100%;
+}
+
+
+.pie_de_pagina{
+
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 22vh;
+    padding: 2rem 0;
+    background-color: #ece9e9;
+    border-top: .05rem solid #e5e5e5;
+
+
+  }
+
+  .logoU:hover{
+
+    filter: opacity(.5);
+  }
+
+  .logoInstagram:hover {
+
+    filter: opacity(.5);
+
+  }
+
+  .logoFacebook:hover {
+
+    filter: opacity(.5);
+
+  }

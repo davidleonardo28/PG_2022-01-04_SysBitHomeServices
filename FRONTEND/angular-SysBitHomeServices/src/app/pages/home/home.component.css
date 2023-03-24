@@ -1,0 +1,412 @@
+/* stylelint-disable selector-list-comma-newline-after */
+
+.eslogan{
+
+  font-family: "Playball"/*"Trebuchete MS"*/;
+  color: gray;
+  text-align: center;
+  font-size: 34px;
+  padding-bottom: 1%;
+
+}
+
+.texto_descriptivo{
+
+  background-color: black;
+  color: white;
+  text-align: justify;
+  font-family: "Helvetica";
+  padding: 1%;
+  padding-right: 4%;
+  padding-top: 1.265%;
+  padding-bottom: 1.265%;
+  object-fit: cover;
+
+}
+
+
+.img1{
+
+  padding: 4.4%;
+  background-color: black;
+
+}
+
+.colum1{
+
+  height: 496px !important;
+
+}
+
+.colum2{
+
+  height: 496px;
+}
+
+.texto_descriptivo_u1{
+
+  padding: 1%;
+  font-family: "Helvetica";
+  text-align: justify !important;
+
+}
+
+.texto_descriptivo_u2{
+
+  text-align: justify !important;
+  padding: 1%;
+  font-family: "Helvetica";
+
+
+}
+
+  #colum3{
+
+    height: 230px;
+    align-items: center;
+
+
+  }
+
+  #colum4{
+
+    height:  230px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: #d5e2f5;
+
+  }
+
+
+  #colum5{
+    height: 230px;
+    align-items: center;
+
+  }
+
+
+  #colum6{
+
+    height: 230px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: #e0fff0;
+  }
+
+
+
+@media (max-width: 576px) {
+
+  .texto_descriptivo{
+
+    font-size: 11px !important;
+
+  }
+
+
+}
+
+@media (max-width: 768px) {
+
+  .texto_descriptivo{
+
+    font-size: 11px;
+
+  }
+
+
+}
+
+
+@media (max-width: 1094px) {
+
+
+  .texto_descriptivo{
+
+    font-size: 11px;
+
+  }
+
+
+}
+
+@media (max-width: 992px) {
+
+
+  .texto_descriptivo{
+
+    font-size: 11px;
+
+  }
+
+}
+
+
+@media (max-width: 1400px) {
+
+
+  .texto_descriptivo{
+
+    font-size: 14px;
+
+  }
+
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 1280px) {
+
+  .texto_descriptivo{
+
+    font-size: 11px;
+
+  }
+
+  .texto_descriptivo_u1{
+
+    font-size: 11px;
+
+  }
+
+  .texto_descriptivo_u2{
+
+    font-size: 11px;
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contenedor_usuarios1{
+
+  text-decoration:none;
+  text-align: left;
+  display:block;
+  float:left;
+  border: solid 1px;
+  border-color: rgb(221, 219, 219);
+  background: linear-gradient(to right,  white 65%, #d5e2f5 35%);
+  padding-right: 12vw;
+  width: 41.5vw;
+  height: 33vh;
+
+}
+
+.contenedor_usuarios2{
+
+  text-decoration:none;
+  text-align: left;
+  display:block;
+  float:left;
+  border: solid 1px;
+  border-color: rgb(221, 219, 219);
+  background: linear-gradient(to right,  white 65%, #e0fff0 35%);
+  padding-right: 12vw;
+  width: 41.5vw;
+  height: 33vh;
+  margin-left: 1.36vw;
+  padding-right: 12vw;
+
+}
+
+
+.img_descripcion_u1{
+
+  margin-left: 26.5vw;
+  margin-top: -25vh;
+
+}
+
+
+.img_descripcion_u2{
+
+  margin-right: 0vw;
+  margin-left: 26.5vw;
+  margin-top: -28.3vh;
+
+}
+
+.texto_de_servicios{
+
+
+  text-align: justify;
+  font-family: "Helvetica";
+
+}
+
+.img_descripcion_servicios{
+
+  margin-right: 0vw;
+  margin-left: 26vw;
+  margin-top: -66vh;
+
+
+}
+
+
+.blog-header {
+  line-height: 1;
+  border-bottom: 3px solid #ff7f27;
+}
+
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+.display-4 {
+  font-size: 2.5rem;
+}
+@media (min-width: 768px) {
+  .display-4 {
+    font-size: 3rem;
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+}
+
+.card-img-right {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
+.flex-auto {
+  flex: 0 0 auto;
+}
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+  .h-md-250 { height: 250px; }
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+.blog-pagination > .btn {
+  border-radius: 2rem;
+}
+
+/*
+ * Blog posts
+ */
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-title {
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #727272;
+}
+
+/*
+ * Footer
+ */
+
+
+
+
+
+.blog-footer {
+
+  margin-top: 25vh;
+  padding: 2.5rem 0;
+  color: #727272;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: .05rem solid #e5e5e5;
+}
+
+
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+

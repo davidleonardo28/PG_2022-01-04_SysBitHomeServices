@@ -17,7 +17,7 @@ interface Documento {
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss'],
+  styleUrls: ['./registro.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class RegistroComponent {

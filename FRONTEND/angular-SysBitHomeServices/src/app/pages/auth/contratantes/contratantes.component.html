@@ -1,0 +1,34 @@
+<div class="card border-danger mb-3">
+  <div class="card-header">Contratante</div>
+  <div class="card-body text-danger">
+    <h5 class="card-title">Listado Contratante</h5>
+    <table class="table table-bordered table-striped">
+      <thead>
+          <tr>
+              <th> Codigo Contratante </th>
+              <th> Nombre Contratante </th>
+              <th> Apellido Contratante </th>
+              <th> Correo Contratante </th>
+              <th> Usuario Contratante </th>
+              <th> Telefono Contratante </th>
+              <th> Fecha Nacimiento Contratante </th>
+              <th> Numero de documento</th>
+              <th> Tipo de documento </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let contratante of contratantes">
+              <td>{{contratante.codUce}}</td>
+              <td>{{contratante.nomUce}}</td>
+              <td>{{contratante.apeUce}}</td>
+              <td>{{contratante.correoUce}}</td>
+              <td>{{contratante.usuarioUce}}</td>
+              <td>{{contratante.telefonoUce}}</td>
+              <td>{{contratante.fechaNacimientoUce}}</td>
+              <td>{{contratante.numDocumentoUce}}</td>
+              <td>{{contratante.tipoDocContratantes.nombreTipoDocumento}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+

@@ -1,7 +1,7 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@auth/guards/auth.guard';
-import { MapasModule } from './pages/mapas/mapas.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,7 +27,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/mapas/mapas.module').then((m) => m.MapasModule),
   },
-
+  {
+    path: 'servicios',
+    loadChildren: () =>
+      import('./pages/servicios/servicios.module').then((m) => m.ServiciosModule),
+  },
   {
     path: 'sign-in',
     loadChildren: () =>
@@ -40,7 +44,9 @@ const routes: Routes = [
       import('./pages/auth/sign-up/sign-up.module').then((m) => m.SignUpModule),
     canActivate: [AuthGuard],
   },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+
+
+  // { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

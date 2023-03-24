@@ -1,0 +1,35 @@
+<div class="card border-danger mb-3">
+  <div class="card-header">Colaboradores</div>
+  <div class="card-body text-danger">
+    <h5 class="card-title">Listado Colaboradores</h5>
+    <table class="table table-bordered table-striped">
+      <thead>
+          <tr>
+              <th> Codigo Colaborador </th>
+              <th> Nombre Colaborador </th>
+              <th> Apellido Colaborador </th>
+              <th> Correo Colaborador </th>
+              <th> Usuario Colaborador </th>
+              <th> Telefono Colaborador </th>
+              <th> Cuenta Bancaria</th>
+              <th> Fecha Nacimiento Colaborador </th>
+              <th> Numero de documento</th>
+              <th> Tipo de documento </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let colaborador of colaboradores">
+              <td>{{colaborador.codUcr}}</td>
+              <td>{{colaborador.nomUcr}}</td>
+              <td>{{colaborador.apeUcr}}</td>
+              <td>{{colaborador.correoUcr}}</td>
+              <td>{{colaborador.usuarioUcr}}</td>
+              <td>{{colaborador.telefonoUcr}}</td>
+              <td>{{colaborador.cuentaBancaria}}</td>
+              <td>{{colaborador.fechaNacimientoUcr}}</td>
+              <td>{{colaborador.numDocumentoUcr}}</td>
+              <td>{{colaborador.tipoDoc.nombreTipoDocumento}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
