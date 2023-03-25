@@ -16,16 +16,14 @@ const routes: Routes = [
       import('./pages/about/about.module').then((m) => m.AboutModule),
   },
   {
-    path: 'registro',
-    loadChildren: () =>
-      import('./pages/auth/registro/registro-module').then(
-        (m) => m.RegistroModule
-      ),
-  },
-  {
     path: 'localizacion',
     loadChildren: () =>
       import('./pages/mapas/mapas.module').then((m) => m.MapasModule),
+  },
+  {
+    path: 'registro',
+    loadChildren: () =>
+      import('./pages/auth/registro-general/registro-general.module').then((m) => m.RegistoGeneralModule),
   },
   {
     path: 'servicios',

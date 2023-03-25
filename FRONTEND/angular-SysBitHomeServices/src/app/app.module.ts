@@ -9,7 +9,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegistroComponent } from './pages/auth/registro/registro.component';
 import { MaterialModule } from './Material.module';
 import { HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -33,26 +32,14 @@ import { AdministradorService } from '@auth/administradores/administrador.servic
 import { CargarScriptsService } from './cargar-scripts.service';
 import { ColaboradorService } from '@auth/colaboradores/colaborador.service';
 import { ContratantesService } from '@auth/contratantes/contratante.service';
-import { FormColaboradoresComponent } from '@auth/form/colaboradores/formcolaboradores.component';
 import { RouterModule, Routes} from '@angular/router';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
-
-const routes: Routes = [
-  {path:'colaboradores', component : ColaboradoresComponent},
-  {path:'contratantes', component : ContratantesComponent},
-  {path:'colaboradores/registro', component : FormColaboradoresComponent},
-  // {path:'contratantes/registro', component : FormContratantesComponent},
-  // {path:'contratantes/editar/:id', component : FormContratantesComponent}
-];
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    ColaboradoresComponent,
-    ContratantesComponent,
-    FormColaboradoresComponent,
-    // FormContratantesComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +54,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule,
     MatIconModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
@@ -75,7 +61,6 @@ const routes: Routes = [
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    RouterModule.forRoot(routes),
     MatGridListModule,
     MatTooltipModule,
     MatSelectModule,
@@ -84,6 +69,7 @@ const routes: Routes = [
     MapasRoutingModule,
     ServiciosRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [MatDatepickerModule,
     MatNativeDateModule,AdministradorService, CargarScriptsService, ColaboradorService, ContratantesService ],

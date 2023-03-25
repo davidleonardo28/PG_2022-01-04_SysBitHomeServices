@@ -8,6 +8,7 @@ import {
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { PDFSource, PDFProgressData, PDFDocumentProxy } from 'ng2-pdf-viewer';
 import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
+import { Routes, RouterModule } from '@angular/router';
 
 interface Documento {
   value: string;

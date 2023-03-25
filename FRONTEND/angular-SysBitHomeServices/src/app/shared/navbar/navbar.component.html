@@ -5,7 +5,9 @@
     >
       <a
         class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+        href="home"
         >SysBitHomeServices
+
         <svg
           class="bi me-2"
           width="40"
@@ -75,7 +77,14 @@
             >
           </li>
           <li>
-            <a href="#" class="nav-link px-2 text-white">Notificaciónes</a>
+            <a href="#" class="nav-link px-2 text-white">Términos y condiciones</a>
+          </li>
+          <li>
+            <a
+              [routerLink]="['/pagos']"
+              routerLinkActive="router-link-active me-2"
+              class="nav-link px-2 text-white"
+              >Pagos</a>
           </li>
           <li>
             <a

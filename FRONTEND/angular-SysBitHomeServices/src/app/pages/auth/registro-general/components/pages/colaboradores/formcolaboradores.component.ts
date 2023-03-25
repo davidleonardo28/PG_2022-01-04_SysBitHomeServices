@@ -1,6 +1,6 @@
-import { TipoDocumento } from './../../tipoDocumento/tipoDocumento';
-import { Colaborador } from './../../colaboradores/colaboradores';
-import { ColaboradorService } from './../../colaboradores/colaborador.service';
+import { ColaboradorService } from './../../../../colaboradores/colaborador.service';
+import { TipoDocumento } from './../../../../tipoDocumento/tipoDocumento';
+import { Colaborador } from './../../../../colaboradores/colaboradores';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Storage, ref, uploadBytes, listAll, getDownloadURL} from '@angular/fire/storage';

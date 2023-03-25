@@ -12,7 +12,8 @@ const routes: Routes = [
       { path: 'fullscreen', component: FullScreenComponent },
       { path: 'marcadores', component: MarcadoresComponent },
       { path: 'propiedades', component: PropiedadesComponent },
-      { path: '**', redirectTo: 'marcadores' },
+      { path: '', redirectTo: '/marcadores', pathMatch: 'full' },
+      // { path: '**', redirectTo: 'marcadores' },
     ]
   }
 

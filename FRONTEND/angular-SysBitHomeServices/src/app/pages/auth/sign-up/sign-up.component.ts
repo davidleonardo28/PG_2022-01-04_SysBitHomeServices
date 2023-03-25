@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OptionsForm } from '@auth/form/form.component';
+import { OptionsForm } from '@auth/form-login/form.component';
 import { ACTIONS } from '@shared/constants/constant';
 
 @Component({

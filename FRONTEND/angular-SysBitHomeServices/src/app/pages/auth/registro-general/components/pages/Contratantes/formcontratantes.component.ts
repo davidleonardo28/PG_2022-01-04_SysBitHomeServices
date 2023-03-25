@@ -1,8 +1,8 @@
+import { Contratante } from '../../../../contratantes/contratantes';
+import { ContratantesService } from '../../../../contratantes/contratante.service';
+import { TipoDocumento } from '../../../../tipoDocumento/tipoDocumento';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ContratantesService } from 'src/app/contratantes/contratante.service';
-import { Contratante } from 'src/app/contratantes/contratantes';
-import { TipoDocumento } from 'src/app/tipoDocumento/tipoDocumento';
 import { Storage, ref, uploadBytes, listAll, getDownloadURL} from '@angular/fire/storage';
 
 @Component({
@@ -23,7 +23,7 @@ export class FormContratantesComponent implements OnInit {
       this.cargarContratante()
       this.getArchivos();
       this.contratanteService.getTipo_documento().subscribe(tipoDocumento => {this.tipoDocumentos = tipoDocumento});
-      
+
     }
 
     public cargarContratante(): void{
@@ -63,7 +63,7 @@ export class FormContratantesComponent implements OnInit {
     getArchivos(){
 
       const fileRef = ref(this.storage, 'DocumentosContratantes');
-      
+
       listAll(fileRef)
       .then(async response => {
         console.log(response)
@@ -72,7 +72,7 @@ export class FormContratantesComponent implements OnInit {
        const url = await getDownloadURL(item);
        this.archivoSeguridadSocial.push(url);
 
-        
+
       }
     }
       )
