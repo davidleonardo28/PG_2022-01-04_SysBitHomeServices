@@ -31,6 +31,11 @@ const routes: Routes = [
       import('./pages/servicios/servicios.module').then((m) => m.ServiciosModule),
   },
   {
+    path: 'tyc',
+    loadChildren: () =>
+      import('./pages/tyc/tyc.module').then((m) => m.TycModule),
+  },
+  {
     path: 'sign-in',
     loadChildren: () =>
       import('./pages/auth/sign-in/sign-in.module').then((m) => m.SignInModule),

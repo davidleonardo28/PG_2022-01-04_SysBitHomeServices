@@ -40,6 +40,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
   declarations: [
     AppComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     MapasRoutingModule,
     ServiciosRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    RouterModule
   ],
   providers: [MatDatepickerModule,
     MatNativeDateModule,AdministradorService, CargarScriptsService, ColaboradorService, ContratantesService ],

@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistroGeneralRoutingModule } from './registro-general-routing.module';
 import {ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -13,12 +15,14 @@ import {ReactiveFormsModule, FormsModule } from '@angular/forms';
     ColaboradoresComponent,
     ContratantesComponent,
     FormColaboradoresComponent,
-    FormContratantesComponent
+    FormContratantesComponent,
+    RegistroComponent
   ],
   imports: [
     CommonModule,
     RegistroGeneralRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class RegistoGeneralModule { }
