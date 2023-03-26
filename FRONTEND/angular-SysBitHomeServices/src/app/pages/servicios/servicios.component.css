@@ -1,14 +1,11 @@
-.titulos{
-
+.titulos {
   color: #283c86;
   font-size: 30px;
   text-transform: uppercase;
-  font-family: 'Calisto MT';
+  font-family: "Calisto MT";
   padding-top: 7rem;
   padding-left: 2.5rem;
 }
-
-
 
 *,
 *::before,
@@ -30,9 +27,8 @@ body {
   height: 300px;
   margin: 50px auto;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2) ;
+    0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-
 }
 
 .slider-controls {
@@ -69,55 +65,52 @@ body {
 }
 
 #btn-1:checked ~ .slider-controls label[for="btn-1"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-2:checked ~ .slider-controls label[for="btn-2"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-3:checked ~ .slider-controls label[for="btn-3"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-4:checked ~ .slider-controls label[for="btn-4"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-5:checked ~ .slider-controls label[for="btn-5"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-6:checked ~ .slider-controls label[for="btn-6"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-7:checked ~ .slider-controls label[for="btn-7"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-8:checked ~ .slider-controls label[for="btn-8"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
-
 #btn-9:checked ~ .slider-controls label[for="btn-9"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-10:checked ~ .slider-controls label[for="btn-10"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-11:checked ~ .slider-controls label[for="btn-11"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
 
 #btn-12:checked ~ .slider-controls label[for="btn-12"] {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
 }
-
-
 
 /* SLIDES */
 
@@ -164,12 +157,11 @@ body {
   color: #fff;
   border-radius: 3px;
   text-decoration: none;
-  background-color: #45B649;
+  background-color: #45b649;
 }
 
 .slide-image img {
   max-width: 100%;
-
 }
 
 /* Slide animations */
@@ -299,9 +291,6 @@ body {
   animation-timing-function: linear;
 }
 /* --------------------------------------------------------------------------------------------- */
-
-
-
 
 @keyframes swap-out {
   0% {
