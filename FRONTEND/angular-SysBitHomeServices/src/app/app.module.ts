@@ -34,8 +34,7 @@ import { ColaboradorService } from '@auth/colaboradores/colaborador.service';
 import { ContratantesService } from '@auth/contratantes/contratante.service';
 import { RouterModule, Routes} from '@angular/router';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-
-
+import { YouTubePlayerModule } from '@angular/youtube-player';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +68,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     PdfViewerModule,
     MapasRoutingModule,
     ServiciosRoutingModule,
+    YouTubePlayerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     RouterModule

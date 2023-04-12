@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Pagos } from './pagos';
+import { PagosService } from './pagos.service';
+import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-pagos',
   templateUrl: './pagos.component.html',
-  styleUrls: ['./pagos.component.scss']
+  styleUrls: ['./pagos.component.scss'],
 })
-export class PagosComponent implements OnInit {
+export class PagosComponent  {
+  // pagos: Pagos = new Pagos();
 
-  constructor() { }
+  // constructor(private pagosService: PagosService) {}
 
-  ngOnInit(): void {
-  }
-
+  // public finalizar(): void {
+  //   this.pagosService.finalizar(this.pagos).subscribe((pago) => {
+  //     //  this.router.navigate(['./home'])
+  //     swal('Servicio Finalizado', `Gracias por utilizar nuestros servicios`);
+  //   });
+  // }
 }

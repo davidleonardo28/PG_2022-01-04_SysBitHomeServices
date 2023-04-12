@@ -2,6 +2,7 @@
 
 <app-menu></app-menu>
 
+
 <ul class="list-group">
   <li class="list-group-item list-group-item-info"
       (click)="agregarMarcador()">
@@ -27,7 +28,7 @@
           Lng,Lat: [ {{ center[0] | number:'2.4-4' }}, {{ center[1] | number:'2.4-4' }} ]
        </label>
       <input type="range"
-             class="form-range"
+             class="form-range "
              [value]="zoomLevel"
              min="0"
              max="18"

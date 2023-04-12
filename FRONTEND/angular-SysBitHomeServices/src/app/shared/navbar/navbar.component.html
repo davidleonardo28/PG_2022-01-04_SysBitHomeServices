@@ -44,7 +44,7 @@
           class="btn btn-primary"
           (click)="onLogout()"
           [routerLink]="['/sign-in']"
-          routerLinkActive="router-link-active me-2"
+          routerLinkActive="router-link-active me-1"
         >
           Cerrar Sesión
         </button>
@@ -53,7 +53,7 @@
         >
           <li>
             <a
-              class="nav-link px-2 text-white"
+              class="nav-link px-1 text-white"
               aria-current="page"
               [routerLink]="['/servicios']"
               routerLinkActive="router-link-active"
@@ -62,39 +62,67 @@
           </li>
           <li>
             <a
-              class="nav-link px-2 text-white"
+              class="nav-link px-1 text-white"
               [routerLink]="['/localizacion']"
               routerLinkActive="router-link-active"
               >Localización</a
             >
           </li>
-          <li>
+          <!-- <li>
             <a
               [routerLink]="['/about']"
               routerLinkActive="router-link-active me-2"
               class="nav-link px-2 text-white"
               >Acerca de Nosotros</a
             >
-          </li>
+          </li> -->
           <li>
-            <a  class="nav-link px-2 text-white"
-            aria-current="page"
-            [routerLink]="['/tyc']"
-            routerLinkActive="router-link-active">Términos y condiciones</a>
+            <a
+              class="nav-link px-1 text-white"
+              aria-current="page"
+              [routerLink]="['/tyc']"
+              routerLinkActive="router-link-active"
+              >Términos y condiciones</a
+            >
           </li>
           <li>
             <a
               [routerLink]="['/pagos']"
               routerLinkActive="router-link-active me-2"
-              class="nav-link px-2 text-white"
-              >Pagos</a>
+              class="nav-link px-1 text-white"
+              >Pagos</a
+            >
           </li>
           <li>
             <a
               [routerLink]="['/registro']"
               routerLinkActive="router-link-active me-2"
-              class="nav-link px-2 text-white"
+              class="nav-link px-1 text-white"
               >Registro</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/administradores']"
+              routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white"
+              >Administradores</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/colaboradores']"
+              routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white"
+              >Colaboradores</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/contratantes']"
+              routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white"
+              >Contratantes</a
             >
           </li>
         </ul>

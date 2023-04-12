@@ -26,6 +26,26 @@ const routes: Routes = [
       import('./pages/auth/registro-general/registro-general.module').then((m) => m.RegistoGeneralModule),
   },
   {
+    path: 'pagos',
+    loadChildren: () =>
+      import('./pages/pagos/pagos.module').then((m) => m.PagosModule),
+  },
+  {
+    path: 'administradores',
+    loadChildren: () =>
+      import('./pages/auth/administradores/administradores.module').then((m) => m.AdministradoresModule),
+  },
+  {
+    path: 'colaboradores',
+    loadChildren: () =>
+      import('./pages/auth/colaboradores/colaboradores.module').then((m) => m.ColaboradoresModule),
+  },
+  {
+    path: 'contratantes',
+    loadChildren: () =>
+      import('./pages/auth/contratantes/contratantes.module').then((m) => m.ContratantesModule),
+  },
+  {
     path: 'servicios',
     loadChildren: () =>
       import('./pages/servicios/servicios.module').then((m) => m.ServiciosModule),

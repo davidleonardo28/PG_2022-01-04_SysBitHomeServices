@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AdministradorService } from './administrador.service';
+import { Administrador } from './administradores';
 @Component({
   selector: 'app-administradores',
   templateUrl: './administradores.component.html',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministradoresComponent implements OnInit {
 
-  constructor() { }
+  administradores: Administrador[];
+  constructor(private administradorService: AdministradorService){}
 
-  ngOnInit(): void {
-  }
+ngOnInit(): void {
+  this.administradorService.getAdministrador().subscribe(administradores =>
+    this.administradores = administradores)
+
+}
 
 }

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@auth/services/auth.services';
 
+interface MenuUsers {
+  ruta: string;
+  nombre: string;
+}
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -18,4 +22,19 @@ export class NavbarComponent {
       console.log(error);
     }
   }
+
+  menuUsers: MenuUsers[] = [
+    {
+      ruta: '/administradores',
+      nombre: 'Administradores'
+    },
+    {
+      ruta: '/colaboradores',
+      nombre: 'Colaboradores'
+    },
+    {
+      ruta: '/contratantes',
+      nombre: 'Contratantes'
+    },
+  ];
 }

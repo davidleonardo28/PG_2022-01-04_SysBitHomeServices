@@ -12,8 +12,6 @@ import { RegistroComponent } from './components/registro/registro.component';
 
 @NgModule({
   declarations: [
-    ColaboradoresComponent,
-    ContratantesComponent,
     FormColaboradoresComponent,
     FormContratantesComponent,
     RegistroComponent

@@ -19,7 +19,11 @@ import { MenuComponent } from '../../shared/menu/menu.component';
   ],
   imports: [
     CommonModule,
-    MapasRoutingModule
+    MapasRoutingModule,
+  ],
+  exports:[
+    MarcadoresComponent,
+    PropiedadesComponent
   ]
 })
 export class MapasModule { }

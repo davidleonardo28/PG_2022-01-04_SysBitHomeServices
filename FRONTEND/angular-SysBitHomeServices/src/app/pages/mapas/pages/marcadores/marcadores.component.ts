@@ -1,53 +1,54 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 
- interface MarcadorColor {
+interface MarcadorColor {
   color: string;
   marker?: mapboxgl.Marker;
   // popup?: mapboxgl.Popup;
-  centro?: [number, number]
+  centro?: [number, number];
 }
-
 
 @Component({
   selector: 'app-marcadores',
   templateUrl: './marcadores.component.html',
   styles: [
     `
-    .mapa-container {
-      height: 100%;
-      width: 100%;
-    }
+      .mapa-container {
+        height: 100%;
+        width: 100%;
+      }
 
-    .list-group {
-      position: fixed;
-      top: 95px;
-      right: 20px;
-      z-index: 99;
-    }
-    li {
-      cursor: pointer;
-    }
-    .row {
-      background-color: white;
-      border-radius: 5px;
-      bottom: 50px;
-      left: 50px;
-      padding: 10px;
-      position: fixed;
-      z-index: 999;
-      width: 400px;
-    }
-    `
-  ]
+      .list-group {
+        position: fixed;
+        top: 95px;
+        right: 20px;
+        z-index: 99;
+      }
+      li {
+        cursor: pointer;
+      }
+      .row {
+        background-color: white;
+        border-radius: 5px;
+        bottom: 50px;
+        left: 50px;
+        padding: 10px;
+        position: fixed;
+        z-index: 999;
+        width: 400px;
+      }
+      .static {
+        position: static ;
+
+      }
+    `,
+  ],
 })
 export class MarcadoresComponent implements AfterViewInit {
-
   @ViewChild('mapa') divMapa!: ElementRef;
   mapa!: mapboxgl.Map;
   zoomLevel: number = 12;
-  center: [number, number] = [ -74.0818175, 4.619714 ];
-
+  center: [number, number] = [-74.0818175, 4.619714];
 
   ngOnDestroy(): void {
     this.mapa.off('zoom', () => {});
@@ -57,15 +58,14 @@ export class MarcadoresComponent implements AfterViewInit {
   // Arreglo de marcadores
   marcadores: MarcadorColor[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit(): void {
-
     this.mapa = new mapboxgl.Map({
       container: this.divMapa.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: this.center,
-      zoom: this.zoomLevel
+      zoom: this.zoomLevel,
     });
 
     this.mapa.on('zoom', (ev) => {
@@ -73,8 +73,8 @@ export class MarcadoresComponent implements AfterViewInit {
     });
 
     this.mapa.on('zoomend', (ev) => {
-      if ( this.mapa.getZoom() > 18 ) {
-        this.mapa.zoomTo( 18 );
+      if (this.mapa.getZoom() > 18) {
+        this.mapa.zoomTo(18);
       }
     });
 
@@ -85,10 +85,6 @@ export class MarcadoresComponent implements AfterViewInit {
       this.center = [lng, lat];
     });
 
-
-
-
-
     this.leerLocalStorage();
 
     // const markerHtml: HTMLElement = document.createElement('div');
@@ -97,101 +93,90 @@ export class MarcadoresComponent implements AfterViewInit {
     // new mapboxgl.Marker()
     //   .setLngLat( this.center )
     //   .addTo( this.mapa );
-
   }
 
-
   agregarMarcador() {
-
-    const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+    const color = '#xxxxxx'.replace(/x/g, (y) =>
+      ((Math.random() * 16) | 0).toString(16)
+    );
 
     const nuevoMarcador = new mapboxgl.Marker({
       draggable: true,
-      color
+      color,
     })
-      .setLngLat( this.center )
-      .addTo( this.mapa );
+      .setLngLat(this.center)
+      .addTo(this.mapa);
 
     this.marcadores.push({
       color,
-      marker: nuevoMarcador
+      marker: nuevoMarcador,
     });
 
-    this.guardarMarcadoresLocalStorage()
+    this.guardarMarcadoresLocalStorage();
 
     nuevoMarcador.on('dragend', () => {
       this.guardarMarcadoresLocalStorage();
     });
-
   }
 
-  irMarcador( marker: mapboxgl.Marker ) {
+  irMarcador(marker: mapboxgl.Marker) {
     this.mapa.flyTo({
-      center: marker.getLngLat()
+      center: marker.getLngLat(),
     });
   }
 
-
   guardarMarcadoresLocalStorage() {
-
     const lngLatArr: MarcadorColor[] = [];
 
-    this.marcadores.forEach( m => {
-
+    this.marcadores.forEach((m) => {
       const color = m.color;
       const { lng, lat } = m.marker!.getLngLat();
 
       lngLatArr.push({
         color: color,
-        centro: [ lng, lat ]
+        centro: [lng, lat],
       });
-    })
+    });
 
-    localStorage.setItem('marcadores', JSON.stringify(lngLatArr) );
-
+    localStorage.setItem('marcadores', JSON.stringify(lngLatArr));
   }
 
   leerLocalStorage() {
-
-    if ( !localStorage.getItem('marcadores') ) {
+    if (!localStorage.getItem('marcadores')) {
       return;
     }
 
     // const popup = new mapboxgl.Popup().setHTML(`<h5>La informaciòn de su servicio es: </h5>
     // <span>Esta agendadado para el dia 13</span>`)
 
-    const lngLatArr: MarcadorColor[] = JSON.parse( localStorage.getItem('marcadores')! );
+    const lngLatArr: MarcadorColor[] = JSON.parse(
+      localStorage.getItem('marcadores')!
+    );
 
-    lngLatArr.forEach( m => {
-
+    lngLatArr.forEach((m) => {
       const newMarker = new mapboxgl.Marker({
         color: m.color,
-        draggable: true
+        draggable: true,
       })
-        .setLngLat( m.centro! )
-        .addTo( this.mapa );
+        .setLngLat(m.centro!)
+        .addTo(this.mapa);
 
       this.marcadores.push({
         marker: newMarker,
-        color: m.color
+        color: m.color,
       });
 
       newMarker.on('dragend', () => {
         this.guardarMarcadoresLocalStorage();
       });
-
-
     });
-
   }
 
-  borrarMarcador( i: number ) {
-
+  borrarMarcador(i: number) {
     this.marcadores[i].marker?.remove();
-    this.marcadores.splice( i, 1);
+    this.marcadores.splice(i, 1);
     this.guardarMarcadoresLocalStorage();
   }
-
 
   zoomOut() {
     this.mapa.zoomOut();
@@ -201,7 +186,7 @@ export class MarcadoresComponent implements AfterViewInit {
     this.mapa.zoomIn();
   }
 
-  zoomCambio( valor: string ) {
-    this.mapa.zoomTo( Number(valor) );
+  zoomCambio(valor: string) {
+    this.mapa.zoomTo(Number(valor));
   }
 }

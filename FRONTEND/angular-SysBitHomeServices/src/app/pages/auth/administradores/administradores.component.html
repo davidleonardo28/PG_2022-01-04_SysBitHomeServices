@@ -1,1 +1,31 @@
-<p>administradores works!</p>
+<div class="card border-danger mb-3">
+  <div class="card-header">Administradores</div>
+  <div class="card-body text-danger">
+    <h2 class="card-title">Listado Administradores</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+          <tr>
+              <th> Codigo admin </th>
+              <th> Nombre administrador </th>
+              <th> Apellido administrador </th>
+              <th> Correo administrador </th>
+              <th> Usuario administrador </th>
+              <th> Telefono administrador </th>
+              <th> Numero de documento</th>
+              <th> Tipo de documento </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let administrador of administradores">
+              <td>{{administrador.codAdmin}}</td>
+              <td>{{administrador.nomAdmin}}</td>
+              <td>{{administrador.apeAdmin}}</td>
+              <td>{{administrador.correoAdmin}}</td>
+              <td>{{administrador.usuarioAdmin}}</td>
+              <td>{{administrador.telefonoAdmin}}</td>
+              <td>{{administrador.numDocumentoAdmin}}</td>
+              <td>{{administrador.tipoDoc.nombreTipoDocumento}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
