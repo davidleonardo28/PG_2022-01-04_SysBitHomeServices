@@ -103,16 +103,21 @@
       </div>
       <div class="row mt-5 text-center">
         <form method="POST" action="https://secure.payzen.lat/vads-payment/">
-          <input class="btn btn-secondary" type="submit" name="pagar" value="Pagar" />
+          <input
+            class="btn btn-secondary"
+            type="submit"
+            name="pagar"
+            value="Pagar"
+          />
         </form>
       </div>
-      <div class="space">
-
+      <div class="space"></div>
+      <hr />
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-info" (click)="finalizoServicio()" role="button">
+          Finalizar Servicio
+        </button>
       </div>
-      <hr/>
-      <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-info" role="button" >Finalizar Servicio </button>
-  </div>
       <br />
     </div>
 

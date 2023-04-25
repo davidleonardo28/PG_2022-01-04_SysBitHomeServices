@@ -1,23 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagos } from './pagos';
 import { PagosService } from './pagos.service';
-import swal from 'sweetalert2';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pagos',
   templateUrl: './pagos.component.html',
   styleUrls: ['./pagos.component.scss'],
 })
-export class PagosComponent  {
+export class PagosComponent {
   // pagos: Pagos = new Pagos();
 
   // constructor(private pagosService: PagosService) {}
 
   // public finalizar(): void {
   //   this.pagosService.finalizar(this.pagos).subscribe((pago) => {
-  //     //  this.router.navigate(['./home'])
+  //      this.router.navigate(['./home'])
   //     swal('Servicio Finalizado', `Gracias por utilizar nuestros servicios`);
   //   });
   // }
+
+  finalizoServicio(): void {
+    Swal({
+      title: 'SysbitHomeServicies!',
+      text: ' Espera que hayas teniendo una gran experiencia. Vuelve pronto',
+      imageUrl: '../../../assets/img/pagos/MensajeDespedida.png',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    });
+  }
 }

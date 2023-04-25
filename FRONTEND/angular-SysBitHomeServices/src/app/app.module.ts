@@ -6,21 +6,21 @@ import { AboutRoutingModule } from '../app/pages/about/about-routing.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Material.module';
 import { HttpClientModule } from '@angular/common/http';
-import {ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatIconModule } from "@angular/material/icon";
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { ColaboradoresComponent } from './pages/auth/colaboradores/colaboradores.component';
@@ -32,15 +32,12 @@ import { AdministradorService } from '@auth/administradores/administrador.servic
 import { CargarScriptsService } from './cargar-scripts.service';
 import { ColaboradorService } from '@auth/colaboradores/colaborador.service';
 import { ContratantesService } from '@auth/contratantes/contratante.service';
-import { RouterModule, Routes} from '@angular/router';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { RouterModule, Routes } from '@angular/router';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-@NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
 
-  ],
+@NgModule({
+  declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -71,10 +68,16 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     YouTubePlayerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    RouterModule
+    RouterModule,
   ],
-  providers: [MatDatepickerModule,
-    MatNativeDateModule,AdministradorService, CargarScriptsService, ColaboradorService, ContratantesService ],
-  bootstrap: [AppComponent,MatDatepickerModule]
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    AdministradorService,
+    CargarScriptsService,
+    ColaboradorService,
+    ContratantesService,
+  ],
+  bootstrap: [AppComponent, MatDatepickerModule],
 })
-export class AppModule { }
+export class AppModule {}
