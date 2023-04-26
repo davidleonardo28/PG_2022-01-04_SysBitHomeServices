@@ -30,4 +30,8 @@ export class PagosComponent {
       imageAlt: 'Custom image',
     });
   }
+
+  goToUrl(): void {
+    window.location.href = 'https://mpago.li/1dFnchx';
+  }
 }
