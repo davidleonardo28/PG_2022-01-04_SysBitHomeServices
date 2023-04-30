@@ -1,40 +1,57 @@
 <div class="container">
-
-
   <div class="row gx-8 top">
-
-      <div class="col text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <!-- <a href="registro/colaboradores/registro"> -->
-            <a
-            [routerLink]="['/registro/colaboradores/registro']"  routerLinkActive="router-link-active"  >
-              >
-              <div id="colum1" class="card1">
-                  <div class="details">
-                      <div class="center">
-                          <h1>Contratante<br></h1>
-                          <span>
-                              <p>!Consigue lo que necesitas para tu hogar!</p>
-                          </span>
-                      </div>
-                  </div>
+    <div class="col text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
+      <div id="colum1" class="card1">
+        <h2
+          class="btn btn-secondary"
+          role="button"
+          [routerLink]="['/registro/colaboradores/registro']"
+        >
+          Registro Contratantes
+        </h2>
+        <!-- <a href="registro/colaboradores/registro"> -->
+        <as
+          [routerLink]="['/registro/colaboradores/registro']"
+          routerLinkActive="router-link-active"
+        >
+          <div id="colum1" class="card1">
+            <div class="details">
+              <div class="center">
+                <h1>Contratante<br /></h1>
+                <span>
+                  <p>!Consigue lo que necesitas para tu hogar!</p>
+                </span>
               </div>
-          </a>
-      </div>
-      <div class="col text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <div id="colum2" class="card2">
-              <!-- <a href="registro/contratantes/registro"> -->
-              <a
-              [routerLink]="['/registro/contratantes/registro']"  routerLinkActive="router-link-active"  >
-                  <div class="details">
-                      <div class="center">
-                          <h1>Colaborador<br></h1>
-                          <span>
-                              <p>!Oferta servicios laborales para el hogar!</p>
-                          </span>
-                      </div>
-                  </div>
-              </a>
+            </div>
           </div>
+        </as>
       </div>
+    </div>
+
+    <div class="col text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
+      <div id="colum2" class="card2">
+        <h2
+          class="row btn btn-secondary"
+          role="button"
+          [routerLink]="['/registro/contratantes/registro']"
+        >
+          Registro Colaboradores
+        </h2>
+        <!-- <a href="registro/contratantes/registro"> -->
+        <a
+          [routerLink]="['/registro/contratantes/registro']"
+          routerLinkActive="router-link-active"
+        >
+          <div class="details">
+            <div class="center">
+              <h1>Colaborador<br /></h1>
+              <span>
+                <p>!Oferta servicios laborales para el hogar!</p>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </div>

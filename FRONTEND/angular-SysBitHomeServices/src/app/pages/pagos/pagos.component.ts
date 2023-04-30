@@ -23,7 +23,7 @@ export class PagosComponent {
   finalizoServicio(): void {
     Swal({
       title: 'SysbitHomeServicies!',
-      text: ' Espera que hayas teniendo una gran experiencia. Vuelve pronto',
+      text: 'Usuario de Pruebas!!, Espera que hayas teniendo una gran experiencia. Vuelve pronto, cualquier duda comunicarse con +57 320-942-8588.',
       imageUrl: '../../../assets/img/pagos/MensajeDespedida.png',
       imageWidth: 400,
       imageHeight: 200,
