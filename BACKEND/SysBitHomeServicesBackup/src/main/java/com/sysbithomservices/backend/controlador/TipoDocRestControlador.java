@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sysbithomservices.backend.modelo.entity.TipoDocumento;
 import com.sysbithomservices.backend.modelos.servicios.InterfaceTipoDocumServicios;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class TipoDocRestControlador {
@@ -23,6 +23,4 @@ public class TipoDocRestControlador {
 	public List<TipoDocumento> index() {
 		return tipoDocService.findAll();
 	}
-
-
 }

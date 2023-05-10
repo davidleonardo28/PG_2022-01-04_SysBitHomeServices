@@ -12,56 +12,81 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="contratantes")
 public class Contratantes implements Serializable{
 	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int codUce;
 	
+	@NotEmpty(message ="no puede estar vacio")
+	@Size(max=50, message ="no puede tener mas de 50 caracteres")
 	@Column(length = 50)
 	String nomUce;
 	
+	@NotEmpty(message ="no puede estar vacio")
+	@Size(max=50, message ="no puede tener mas de 50 caracteres")
 	@Column(length = 50)
 	String apeUce;
-	
+
+	@NotEmpty(message ="no puede estar vacio")
+	@Email(message ="el correo es incorrecto")
 	@Column(nullable = false, unique = true)
 	String correoUce;
+	
+	@NotNull(message ="no puede estar vacio")
 	@Column(nullable = false)
 	Long telefonoUce;
 
+	@NotEmpty(message ="no puede estar vacio")
 	@Column(nullable = false)
 	String claveUce;
 	
+	@NotNull(message ="no puede estar vacio")
 	@Column(nullable = false)
 	Long numDocumentoUce;
 
+	@NotEmpty(message ="no puede estar vacio")
 	@Column(length = 50, nullable = false, unique = true)
-	String usuarioUce;
+	String username;
 	
+	@NotNull(message ="no puede estar vacio")
 	@Temporal(TemporalType.DATE)
 	Date fechaNacimientoUce;
 	
-	@OneToOne(mappedBy = "cont", fetch = FetchType.LAZY)
-	Supervisados supervisadosList;
-	
+	@NotNull(message ="no puede estar vacio")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "docCont")
 	TipoDocumento tipoDocContratantes;
+	
+	Boolean enable;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "uce_authorities", joinColumns = @JoinColumn(name= "uce_id"),
+	inverseJoinColumns = @JoinColumn(name= "role_id"))
+	List<Supervisados> supervisados;
 	
 	public Contratantes() {
 		
 	}
 
 	public Contratantes(int codUce, String nomUce, String apeUce, String correoUce, Long telefonoUce, String claveUce,
-			Long numDocumentoUce, String usuarioUce, Date fechaNacimientoUce, Supervisados supervisadosList,
+			Long numDocumentoUce, String username, Date fechaNacimientoUce,
 			TipoDocumento tipoDocContratantes) {
 		super();
 		this.codUce = codUce;
@@ -71,14 +96,13 @@ public class Contratantes implements Serializable{
 		this.telefonoUce = telefonoUce;
 		this.claveUce = claveUce;
 		this.numDocumentoUce = numDocumentoUce;
-		this.usuarioUce = usuarioUce;
+		this.username = username;
 		this.fechaNacimientoUce = fechaNacimientoUce;
-		this.supervisadosList = supervisadosList;
 		this.tipoDocContratantes = tipoDocContratantes;
 	}
 	
 	public Contratantes(String nomUce, String apeUce, String correoUce, Long telefonoUce, String claveUce,
-			Long numDocumentoUce, String usuarioUce, Date fechaNacimientoUce, Supervisados supervisadosList,
+			Long numDocumentoUce, String username, Date fechaNacimientoUce, 
 			TipoDocumento tipoDocContratantes) {
 		this.nomUce = nomUce;
 		this.apeUce = apeUce;
@@ -86,9 +110,8 @@ public class Contratantes implements Serializable{
 		this.telefonoUce = telefonoUce;
 		this.claveUce = claveUce;
 		this.numDocumentoUce = numDocumentoUce;
-		this.usuarioUce = usuarioUce;
+		this.username = username;
 		this.fechaNacimientoUce = fechaNacimientoUce;
-		this.supervisadosList = supervisadosList;
 		this.tipoDocContratantes = tipoDocContratantes;
 		
 	}
@@ -149,12 +172,13 @@ public class Contratantes implements Serializable{
 		this.numDocumentoUce = numDocumentoUce;
 	}
 
-	public String getUsuarioUce() {
-		return usuarioUce;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUsuarioUce(String usuarioUce) {
-		this.usuarioUce = usuarioUce;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public Date getFechaNacimientoUce() {
@@ -165,14 +189,6 @@ public class Contratantes implements Serializable{
 		this.fechaNacimientoUce = fechaNacimientoUce;
 	}
 
-	public Supervisados getSupervisadosList() {
-		return supervisadosList;
-	}
-
-	public void setSupervisadosList(Supervisados supervisadosList) {
-		this.supervisadosList = supervisadosList;
-	}
-
 	public TipoDocumento getTipoDocContratantes() {
 		return tipoDocContratantes;
 	}
@@ -180,4 +196,20 @@ public class Contratantes implements Serializable{
 	public void setTipoDocContratantes(TipoDocumento tipoDocContratantes) {
 		this.tipoDocContratantes = tipoDocContratantes;
 	}
+
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
+	}
+
+	public List<Supervisados> getSupervisados() {
+		return supervisados;
+	}
+
+	public void setSupervisados(List<Supervisados> supervisados) {
+		this.supervisados = supervisados;
+	}	
 }

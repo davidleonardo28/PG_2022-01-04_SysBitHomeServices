@@ -1,16 +1,19 @@
 package com.sysbithomservices.backend.controlador;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import org.apache.commons.codec.binary.Hex;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,19 +28,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sysbithomservices.backend.modelo.entity.Colaboradores;
 import com.sysbithomservices.backend.modelos.servicios.InterfaceColaboradoresServicios;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ColaboradorRestControlador {
 
 	@Autowired
 	private InterfaceColaboradoresServicios colabService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
-	@GetMapping("/colaboradores")
+	@Secured("ROLE_ADMIN")
+	@GetMapping("/colaboradores/Lista")
 	public List<Colaboradores> index() {
 		return colabService.findAll();
 	}
-
+	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/colaboradores/{id}")
 	public ResponseEntity<?> show(@PathVariable int id) {
 		Map<String, Object> response = new HashMap<>();
@@ -56,20 +64,33 @@ public class ColaboradorRestControlador {
 
 		return new ResponseEntity<Colaboradores>(colaborador, HttpStatus.OK);
 	}
-
-	@PostMapping("/colaboradores")
+	
+	
+	@PostMapping("/colaboradores/registro")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<?> create(@RequestBody Colaboradores colaboradores) {
+	public ResponseEntity<?> create(@Valid @RequestBody Colaboradores colaboradores, BindingResult result) {
 
 		Colaboradores colabNew = null;
+		
 		Map<String, Object> response = new HashMap<>();
+		
+		if (result.hasErrors()) {
+
+			List<String> errores = result.getFieldErrors().stream()
+					.map(err -> "El campo '" + err.getField() + "' " + err.getDefaultMessage())
+					.collect(Collectors.toList());
+
+			response.put("Errores", errores);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+
+		}
 
 		try {
 			colabNew = colabService.save(new Colaboradores(colaboradores.getNomUcr(), colaboradores.getApeUcr(),
 					colaboradores.getCorreoUcr(), colaboradores.getTelefonoUcr(), colaboradores.getNumDocumentoUcr(),
-					colaboradores.getCuentaBancaria(), encryptPassword(colaboradores.getClaveUcr()),
-					colaboradores.getUsuarioUcr(), colaboradores.getFechaNacimientoUcr(), null,
-					colaboradores.gettipoDoc()));
+					 passwordEncoder.encode(colaboradores.getClaveUcr()),
+					colaboradores.getUsername(), colaboradores.getFechaNacimientoUcr(),
+					colaboradores.getTipoDoc()));
 		} catch (Exception e) {
 			response.put("Mensaje", "Error al momento de insertar un colaborador en la base de datos");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -78,12 +99,24 @@ public class ColaboradorRestControlador {
 		response.put("Administrador", colabNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
-
+	
+	@Secured({"ROLE_ADMIN","ROLE_UCR"})
 	@PutMapping("/colaboradores/{id}")
-	public ResponseEntity<?> update(@RequestBody Colaboradores colaboradores, @PathVariable int id) {
+	public ResponseEntity<?> update(@Valid @RequestBody Colaboradores colaboradores, BindingResult result, @PathVariable int id) {
 		Colaboradores colaboradorActual = colabService.findById(id);
 		Colaboradores colabUpdate = null;
 		Map<String, Object> response = new HashMap<>();
+		
+		if (result.hasErrors()) {
+
+			List<String> errores = result.getFieldErrors().stream()
+					.map(err -> "El campo '" + err.getField() + "' " + err.getDefaultMessage())
+					.collect(Collectors.toList());
+
+			response.put("Errores", errores);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+
+		}
 
 		if (colaboradorActual == null) {
 			response.put("Mensaje", "Error: El usuario colaborador con el id "
@@ -93,14 +126,12 @@ public class ColaboradorRestControlador {
 
 		try {
 			colaboradorActual.setApeUcr(colaboradores.getApeUcr());
-			colaboradorActual.setClaveUcr(colaboradores.getClaveUcr());
+			colaboradorActual.setClaveUcr(passwordEncoder.encode(colaboradores.getClaveUcr()));
 			colaboradorActual.setCorreoUcr(colaboradores.getCorreoUcr());
-			colaboradorActual.setCuentaBancaria(colaboradores.getCuentaBancaria());
 			colaboradorActual.setFechaNacimientoUcr(colaboradores.getFechaNacimientoUcr());
 			colaboradorActual.setNomUcr(colaboradores.getNomUcr());
-			colaboradorActual.setSeguridadSocial(colaboradores.getSeguridadSocial());
 			colaboradorActual.setTelefonoUcr(colaboradores.getTelefonoUcr());
-			colaboradorActual.setUsuarioUcr(colaboradores.getUsuarioUcr());
+			colaboradorActual.setUsername(colaboradores.getUsername());
 
 			colabUpdate = colabService.save(colaboradorActual);
 
@@ -113,7 +144,8 @@ public class ColaboradorRestControlador {
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
-
+	
+	@Secured({"ROLE_ADMIN","ROLE_UCR"})
 	@DeleteMapping("/colaboradores/{id}")
 	public ResponseEntity<?> delete(@PathVariable int id) {
 		Map<String, Object> response = new HashMap<>();
@@ -126,22 +158,6 @@ public class ColaboradorRestControlador {
 		}
 		response.put("mensaje", "El colaborador ha sido eliminado con exito");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
-
-	}
-
-	public String encryptPassword(String password) {
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("SHA-512");
-			md.update(password.getBytes());
-			byte[] mb = md.digest();
-
-			return Hex.encodeHexString(mb);
-		} catch (NoSuchAlgorithmException e) {
-
-			e.printStackTrace();
-			return "No se pudo encriptar la contraseña";
-		}
 
 	}
 }

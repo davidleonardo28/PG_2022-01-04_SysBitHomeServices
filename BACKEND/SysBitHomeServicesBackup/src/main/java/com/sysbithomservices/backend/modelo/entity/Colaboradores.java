@@ -1,10 +1,9 @@
 package com.sysbithomservices.backend.modelo.entity;
 
 import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 import java.util.Date;
-import org.apache.commons.codec.binary.Hex;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,63 +13,82 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="colaboradores")
 public class Colaboradores implements Serializable{
 
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int codUcr;
 	
+	@NotEmpty(message ="no puede estar vacio")
+	@Size(max=50, message ="no puede tener mas de 50 caracteres")
 	@Column(length = 50, nullable = false)
 	String nomUcr;
 	
+	@NotEmpty(message ="no puede estar vacio")
+	@Size(max=50, message ="no puede tener mas de 50 caracteres")
 	@Column(length = 50, nullable = false)
 	String apeUcr;
 	
+	@NotEmpty(message ="no puede estar vacio")
+	@Email(message ="el correo es incorrecto")
 	@Column(nullable = false, unique = true)
 	String correoUcr;
 	
+	@NotNull(message ="no puede estar vacio")
 	@Column(nullable = false)
 	Long telefonoUcr;
 	
+	@NotNull(message ="no puede estar vacio")
 	@Column(nullable = false)
 	Long numDocumentoUcr;
 	
-	@Column(nullable = false)
-	Long cuentaBancaria;
-	
+	@NotEmpty(message ="no puede estar vacio")
 	@Column(nullable = false)
 	String claveUcr;
 	
+	@NotEmpty(message ="no puede estar vacio")
 	@Column(length = 10, nullable = false, unique = true)
-	String usuarioUcr;
+	String username;
 	
+	@NotNull(message ="no puede estar vacio")
 	@Temporal(TemporalType.DATE)
 	Date fechaNacimientoUcr;
 	
-	String seguridadSocial;
-	
-	@OneToOne(mappedBy = "colab", fetch = FetchType.LAZY)
-	Supervisados supervisadosList;
-	
+	@NotNull(message ="no puede estar vacio")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "doc_colab")	
 	TipoDocumento tipoDoc;
+	
+	Boolean enable;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "ucr_authorities", joinColumns = @JoinColumn(name= "ucr_id"),
+	inverseJoinColumns = @JoinColumn(name= "role_id"))
+	List<Supervisados> supervisados;
 		
 	public Colaboradores() {
 		
 	}
 
 	public Colaboradores(int codUcr, String nomUcr, String apeUcr, String correoUcr, Long telefonoUcr,
-			Long numDocumentoUcr, Long cuentaBancaria, String claveUcr, String usuarioUcr, Date fechaNacimientoUcr,
-			String seguridadSocial, Supervisados supervisadosList, TipoDocumento tipoDoc) {
+			Long numDocumentoUcr, String claveUcr, String username, Date fechaNacimientoUcr,
+			 TipoDocumento tipoDoc) {
 		super();
 		this.codUcr = codUcr;
 		this.nomUcr = nomUcr;
@@ -78,30 +96,24 @@ public class Colaboradores implements Serializable{
 		this.correoUcr = correoUcr;
 		this.telefonoUcr = telefonoUcr;
 		this.numDocumentoUcr = numDocumentoUcr;
-		this.cuentaBancaria = cuentaBancaria;
 		this.claveUcr = claveUcr;
-		this.usuarioUcr = usuarioUcr;
+		this.username = username;
 		this.fechaNacimientoUcr = fechaNacimientoUcr;
-		this.seguridadSocial = seguridadSocial;
-		this.supervisadosList = supervisadosList;
 		this.tipoDoc = tipoDoc;
 	}
 
 	
 	
 	public Colaboradores(String nomUcr, String apeUcr, String correoUcr, Long telefonoUcr, Long numDocumentoUcr,
-			Long cuentaBancaria, String claveUcr, String usuarioUcr, Date fechaNacimientoUcr,
-			Supervisados supervisadosList, TipoDocumento tipoDoc) {
+		 String claveUcr, String username, Date fechaNacimientoUcr, TipoDocumento tipoDoc) {
 		this.nomUcr = nomUcr;
 		this.apeUcr = apeUcr;
 		this.correoUcr = correoUcr;
 		this.telefonoUcr = telefonoUcr;
 		this.numDocumentoUcr = numDocumentoUcr;
-		this.cuentaBancaria = cuentaBancaria;
 		this.claveUcr = claveUcr;
-		this.usuarioUcr = usuarioUcr;
+		this.username = username;
 		this.fechaNacimientoUcr = fechaNacimientoUcr;
-		this.supervisadosList = supervisadosList;
 		this.tipoDoc = tipoDoc;
 	}
 
@@ -153,14 +165,6 @@ public class Colaboradores implements Serializable{
 		this.numDocumentoUcr = numDocumentoUcr;
 	}
 
-	public Long getCuentaBancaria() {
-		return cuentaBancaria;
-	}
-
-	public void setCuentaBancaria(Long cuentaBancaria) {
-		this.cuentaBancaria = cuentaBancaria;
-	}
-
 	public String getClaveUcr() {
 		return claveUcr;
 	}
@@ -168,13 +172,22 @@ public class Colaboradores implements Serializable{
 	public void setClaveUcr(String claveUcr) {
 		this.claveUcr = claveUcr;
 	}
+	
 
-	public String getUsuarioUcr() {
-		return usuarioUcr;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUsuarioUcr(String usuarioUcr) {
-		this.usuarioUcr = usuarioUcr;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public TipoDocumento getTipoDoc() {
+		return tipoDoc;
+	}
+
+	public void setTipoDoc(TipoDocumento tipoDoc) {
+		this.tipoDoc = tipoDoc;
 	}
 
 	public Date getFechaNacimientoUcr() {
@@ -185,28 +198,19 @@ public class Colaboradores implements Serializable{
 		this.fechaNacimientoUcr = fechaNacimientoUcr;
 	}
 
-	public String getSeguridadSocial() {
-		return seguridadSocial;
+	public Boolean getEnable() {
+		return enable;
 	}
 
-	public void setSeguridadSocial(String seguridadSocial) {
-		this.seguridadSocial = seguridadSocial;
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 
-	public Supervisados getSupervisadosList() {
-		return supervisadosList;
+	public List<Supervisados> getSupervisados() {
+		return supervisados;
 	}
 
-	public void setSupervisadosList(Supervisados supervisadosList) {
-		this.supervisadosList = supervisadosList;
+	public void setSupervisados(List<Supervisados> supervisados) {
+		this.supervisados = supervisados;
 	}
-
-	public TipoDocumento gettipoDoc() {
-		return tipoDoc;
-	}
-
-	public void setDocColab(TipoDocumento tipoDoc) {
-		this.tipoDoc = tipoDoc;
-	}
-	
 }

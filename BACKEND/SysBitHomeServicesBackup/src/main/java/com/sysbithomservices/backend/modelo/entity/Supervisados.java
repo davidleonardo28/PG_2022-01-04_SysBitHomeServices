@@ -2,37 +2,35 @@ package com.sysbithomservices.backend.modelo.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 @Entity
 @Table(name="supervisados")
 public class Supervisados implements Serializable{
-	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int codUsuarios; 
 	
-	@OneToOne
-	@JoinColumn(name = "sup_admin")
-	Administradores admin;
+	@Column
+	String nombRole;
 	
-	@OneToOne
-	@JoinColumn(name = "sup_colab")
-	Colaboradores colab;
-	
-	@OneToOne
-	@JoinColumn(name = "sup_cont")
-	Contratantes cont;
+	public Supervisados() {
+		
+	}
 
-	public Supervisados(int codUsuarios) {
+	public Supervisados(int codUsuarios, String nombRole) {
 		super();
 		this.codUsuarios = codUsuarios;
+		this.nombRole = nombRole;
 	}
 
 	public int getCodUsuarios() {
@@ -43,28 +41,11 @@ public class Supervisados implements Serializable{
 		this.codUsuarios = codUsuarios;
 	}
 
-	public Administradores getAdmin() {
-		return admin;
+	public String getNombRole() {
+		return nombRole;
 	}
 
-	public void setAdmin(Administradores admin) {
-		this.admin = admin;
+	public void setNombRole(String nombRole) {
+		this.nombRole = nombRole;
 	}
-
-	public Colaboradores getColab() {
-		return colab;
-	}
-
-	public void setColab(Colaboradores colab) {
-		this.colab = colab;
-	}
-
-	public Contratantes getCont() {
-		return cont;
-	}
-
-	public void setCont(Contratantes cont) {
-		this.cont = cont;
-	}
-	
 }

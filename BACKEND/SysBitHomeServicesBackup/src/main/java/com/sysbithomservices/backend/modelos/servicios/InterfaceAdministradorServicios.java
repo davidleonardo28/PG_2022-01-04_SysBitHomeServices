@@ -2,16 +2,17 @@ package com.sysbithomservices.backend.modelos.servicios;
 
 import java.util.List;
 
-import com.sysbithomservices.backend.modelo.entity.Administradores;
+import com.sysbithomservices.backend.modelo.entity.Administrador;
 
 public interface InterfaceAdministradorServicios {
 
-	public List<Administradores> findAll();
+	public List<Administrador> findAll();
 	
-	public Administradores findById(int id);
+	public Administrador findById(int id);
 	
-	public Administradores save(Administradores contratantes);
+	public Administrador save(Administrador contratantes);
 	
 	public void delete(int id);
 	
+	public Administrador findByUsername(String username);
 }

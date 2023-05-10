@@ -1,4 +1,4 @@
-package com.sysbithomservices.backend.controlador;
+ package com.sysbithomservices.backend.controlador;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sysbithomservices.backend.modelo.entity.Administradores;
+import com.sysbithomservices.backend.modelo.entity.Administrador;
 import com.sysbithomservices.backend.modelos.servicios.InterfaceAdministradorServicios;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class AdministradoresRestControlador {
@@ -32,15 +33,17 @@ public class AdministradoresRestControlador {
 	@Autowired
 	private InterfaceAdministradorServicios adminService;
 
-	@GetMapping("/administradores")
-	public List<Administradores> index() {
+	@Secured("ROLE_ADMIN")
+	@GetMapping("/administradores/lista")
+	public List<Administrador> index() {
 		return adminService.findAll();
 	}
-
+	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/administradores/{id}")
 	public ResponseEntity<?> show(@PathVariable int id) {
 
-		Administradores admin = null;
+		Administrador admin = null;
 
 		Map<String, Object> response = new HashMap<>();
 
@@ -54,13 +57,14 @@ public class AdministradoresRestControlador {
 			response.put("Mensaje", "El administrador con el id: ".concat(String.valueOf(id).concat(" no existe")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Administradores>(admin, HttpStatus.OK);
+		return new ResponseEntity<Administrador>(admin, HttpStatus.OK);
 	}
-
+	
+	
 	@PostMapping("/administradores")
-	public ResponseEntity<?> create(@RequestBody Administradores administradores) {
+	public ResponseEntity<?> create(@RequestBody Administrador administradores) {
 
-		Administradores adminNew = null;
+		Administrador adminNew = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
@@ -76,9 +80,9 @@ public class AdministradoresRestControlador {
 	}
 
 	@PutMapping("/administradores/{id}")
-	public ResponseEntity<?> update(@RequestBody Administradores administradores, @PathVariable int id) {
-		Administradores administradoresActual = adminService.findById(id);
-		Administradores adminUpdate = null;
+	public ResponseEntity<?> update(@RequestBody Administrador administradores, @PathVariable int id) {
+		Administrador administradoresActual = adminService.findById(id);
+		Administrador adminUpdate = null;
 		Map<String, Object> response = new HashMap<>();
 
 		if (administradoresActual == null) {
@@ -90,11 +94,11 @@ public class AdministradoresRestControlador {
 		try {
 
 			administradoresActual.setApeAdmin(administradores.getApeAdmin());
-			administradoresActual.setClaveAdmin(administradores.getClaveAdmin());
+			administradoresActual.setPassword(administradores.getPassword());
 			administradoresActual.setNomAdmin(administradores.getNomAdmin());
 			administradoresActual.setNumDocumentoAdmin(administradores.getNumDocumentoAdmin());
 			administradoresActual.setTelefonoAdmin(administradores.getTelefonoAdmin());
-			administradoresActual.setUsuarioAdmin(administradores.getUsuarioAdmin());
+			administradoresActual.setUsername(administradores.getUsername());
 
 			adminUpdate = adminService.save(administradoresActual);
 

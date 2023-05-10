@@ -14,5 +14,6 @@ public interface InterfaceColaboradoresServicios {
 	
 	public void delete(int id);
 	
-	
+	public Colaboradores findByUsername(String username);
+
 }

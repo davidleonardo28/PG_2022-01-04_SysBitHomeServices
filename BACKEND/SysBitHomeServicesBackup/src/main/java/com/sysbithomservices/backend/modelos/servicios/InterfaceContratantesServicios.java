@@ -14,5 +14,7 @@ public interface InterfaceContratantesServicios {
 	
 	public void delete(int id);
 	
+	public Contratantes findByUsername(String username);
+
 	
 }
