@@ -5,22 +5,24 @@ import { ColaboradoresComponent } from './../colaboradores/colaboradores.compone
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistroGeneralRoutingModule } from './registro-general-routing.module';
-import {ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RegistroComponent } from './components/registro/registro.component';
-
+import { TycComponent } from '../../tyc/tyc.component';
+import { TycModule } from '../../tyc/tyc.module';
 
 @NgModule({
   declarations: [
     FormColaboradoresComponent,
     FormContratantesComponent,
-    RegistroComponent
+    RegistroComponent,
   ],
   imports: [
     CommonModule,
     RegistroGeneralRoutingModule,
     FormsModule,
-    RouterModule
-  ]
+    RouterModule,
+    TycModule,
+  ],
 })
-export class RegistoGeneralModule { }
+export class RegistoGeneralModule {}

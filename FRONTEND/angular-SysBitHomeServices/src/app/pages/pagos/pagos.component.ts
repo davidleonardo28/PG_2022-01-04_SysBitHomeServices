@@ -32,6 +32,7 @@ export class PagosComponent {
   }
 
   goToUrl(): void {
-    window.location.href = 'https://mpago.li/1dFnchx';
+    // window.location.href = 'https://mpago.li/1dFnchx';
+    window.open('https://mpago.li/1dFnchx', '_blank');
   }
 }

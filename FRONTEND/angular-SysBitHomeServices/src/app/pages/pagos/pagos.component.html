@@ -5,46 +5,48 @@
 <div class="container">
   <script src="https://www.paypal.com/sdk/js?client-id=AXXOGfXO09fK4PBr9R6AATYCURn6DdICkW0-FQwkuL8EFtvG2sfkww_fstS73xR_03S7u_Pf6j8tewig"></script>
   <div class="separacion">
-    <div class="row titulo1">
-      <p>Servicios Adquiridos más cercanos!</p>
+    <div class="row">
+      <h1 class="font-weight-bold titulo3">
+        <mark>Servicios Adquiridos más cercanos!</mark>
+        <hr />
+      </h1>
+      <div class="row">
+        <p class="texto1 mt-4">
+          Escoge al usuario colaborador más cercano a tu ubicación, contáctalo
+          para el ajuste de horarios y requerimientos del servicio, por medio de
+          la aplicación WhatsApp. Una vez efectuado el contacto y establecido el
+          horario, realiza el pago a SysBitHomeServices. Una vez finalizado el
+          contrato, se desembolsará el dinero al usuario que has contratado.
+        </p>
+
+        <br />
+
+        <p class="texto1">
+          SysBitHomeServices busca unir a los usuarios para una contratación
+          ágil, personalizada y sin tanto complique.
+        </p>
+      </div>
     </div>
 
-    <div class="row mt-2">
-      <p class="texto1 mt-4">
-        Escoge al usuario colaborador más cercano a tu ubicación, contáctalo
-        para el ajuste de horarios y requerimientos del servicio, por medio de
-        la aplicación WhatsApp. Una vez efectuado el contacto y establecido el
-        horario, realiza el pago a SysBitHomeServices. Una vez finalizado el
-        contrato, se desembolsará el dinero al usuario que has contratado.
-      </p>
-
-      <br />
-
-      <p class="texto1">
-        SysBitHomeServices busca unir a los usuarios para una contratación ágil,
-        personalizada y sin tanto complique.
-      </p>
+    <div class="row">
+      <h1 class="font-weight-bold titulo3">Pago virtual:</h1>
+      <hr />
     </div>
 
-    <div class="row titulo2">
-      <p>Pago virtual:</p>
-    </div>
-
-    <div class="row mt-2">
+    <div class="row">
       <p class="texto1 mt-4">
         Con SysBitHomeServices puedes realizar el pago del servicio selecionado,
         a través de un código QR que se debe escaner mediante la aplicación
         móvil <span style="color: red">DaviPlata</span>. De esa forma, ahorras
         tiempo al no ingresar datos de tarjetas bancarias.
       </p>
-
-      <br />
-
       <p class="texto1">
         Si no cuentas con una cuenta en DaviPlata, sigue los pasos que se
         describen en el siguiente video y crea tu cuenta en menos de cinco
         minutos.
       </p>
+
+      <br />
 
       <br />
 
@@ -57,6 +59,7 @@
     </div>
     <div class="row titulo3">
       <p>Factura (Código QR):</p>
+      <hr />
     </div>
 
     <div class="row mt-3">
@@ -96,29 +99,45 @@
       </div>
       <!-- <div
         class="spaceImg col text-center col-sm-6 col-md-6 col-lg-12 col-xl-12" -->
-      <div class="row align-items-start">
-        <div class="col">
-          <img
-            src="../../../assets/img/pagos/logo-mercadopago.jpg"
-            class="img-fluid border border-2 border-dark"
-          />
+      <div class="row align-items-flex-start">
+        <div class="col-sm-5 col-md-6">
+          <div class="row text-center">
+            <h2>Mercado Pago</h2>
+            <img
+              src="../../../assets/img/pagos/logo-mercadopago.jpg"
+              class="img-fluid border border-2 border-dark"
+            />
+            <div class="space"></div>
+            <button
+              class="btn btn-primary"
+              role="button"
+              (click)="goToUrl()"
+              id="buttonPagar"
+            >
+              Pagar por mercado Pago
+            </button>
+          </div>
         </div>
-        <div class="col">
-          <img
-            src="../../../assets/img/pagos/PS1.jpg"
-            class="img-fluid border border-2 border-dark"
-          />
+
+        <div class="col-sm-5 col-md-6">
+          <div class="text-center">
+            <h2>Código QR DavidPlata:</h2>
+            <img
+              src="../../../assets/img/pagos/PS1.jpg"
+              class="img-fluid border border-2 border-dark"
+            />
+          </div>
         </div>
-      </div>
-      <div class="row mt-5 text-center">
-        <button class="btn btn-success" role="button" (click)="goToUrl()">
-          PAGAR
-        </button>
       </div>
       <div class="space"></div>
       <hr />
       <div class="row mt-2 text-center">
-        <button class="btn btn-info" (click)="finalizoServicio()" role="button">
+        <button
+          class="btn btn-success"
+          (click)="finalizoServicio()"
+          role="button"
+          [routerLink]="['/home']"
+        >
           Finalizar Servicio
         </button>
       </div>

@@ -3,15 +3,9 @@ import { TycRoutingModule } from './tyc-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 @NgModule({
-  declarations: [
-    TycComponent
-  ],
-  imports: [
-    CommonModule,
-    TycRoutingModule
-  ]
+  declarations: [TycComponent],
+  imports: [CommonModule, TycRoutingModule],
+  exports: [TycComponent],
 })
-export class TycModule { }
+export class TycModule {}
