@@ -1,166 +1,133 @@
-<div class="container" style="margin-left: 10%; margin-top: 2.5%">
-  <div class="card bg-white text-dark" style="height: 30rem; width: 25cm">
-    <div class="card-header">Registrar Colaborador</div>
-    <div class="card-body">
-      <form (ngSubmit)="create()">
-        <div class="row" style="height: 2cm">
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Nombre"
-              aria-label="Nombre"
-              [(ngModel)]="colaborador.nomUcr"
-              name="nomUcr"
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Apellido"
-              aria-label="Apellido"
-              [(ngModel)]="colaborador.apeUcr"
-              name="apeUcr"
-            />
-          </div>
-        </div>
-        <div class="row" style="height: 2cm">
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Correo"
-              aria-label="Correo"
-              [(ngModel)]="colaborador.correoUcr"
-              name="correoUcr"
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Usuario"
-              aria-label="Usuario"
-              [(ngModel)]="colaborador.usuarioUcr"
-              name="usuarioUcr"
-            />
-          </div>
-        </div>
-        <div class="row" style="height: 2cm">
-          <div class="col">
-            <input
-              type="password"
-              class="form-control"
-              placeholder="Contraseña"
-              aria-label="Contraseña"
-              [(ngModel)]="colaborador.claveUcr"
-              name="claveUcr"
-            />
-          </div>
-          <div class="col">
-            <input
-              type="password"
-              class="form-control"
-              placeholder="Verificar Contraseña"
-              aria-label="Verificar Contraseña"
-              [(ngModel)]="colaborador.claveUcr"
-              name="claveUcr"
-            />
-          </div>
-        </div>
-        <div class="row" style="height: 2cm">
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Telefono"
-              aria-label="Telefono"
-              [(ngModel)]="colaborador.telefonoUcr"
-              name="telefonoUcr"
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Cuenta Bancaria"
-              aria-label="Cuenta Bancaria"
-              [(ngModel)]="colaborador.cuentaBancaria"
-              name="cuentaBancaria"
-            />
-          </div>
-        </div>
-        <div class="row" style="height: 2cm">
-          <div class="col">
-            <input
-              type="date"
-              data-date-format="aaaa/mm/dd"
-              class="form-control"
-              placeholder="Fecha de nacimiento"
-              aria-label="Fecha de nacimiento"
-              [(ngModel)]="colaborador.fechaNacimientoUcr"
-              name="fechaNacimientoUcr"
-            />
-          </div>
-          <div class="col">
-            <select
-              class="form-select"
-              [(ngModel)]="colaborador.tipoDoc"
-              name="tipoDoc"
-              aria-label="Default select example"
-            >
-              <option [ngValue]="undefined">Tipo de documento</option>
-              <option
-                [ngValue]="tipoDocumento"
-                *ngFor="let tipoDocumento of tipoDocumentos"
-              >
-                {{ tipoDocumento.nombreTipoDocumento }}
-              </option>
-            </select>
-          </div>
+<div class="container" style="margin-left: 10%;
+margin-top: 2.5%;">
+    <div class="card bg-white text-dark" style="height:47rem;width: 30cm;">
+        <div class="card-header">Registrar Colaborador</div>
+        <div class="card-body">
+            <form class="was-validated">
+                <div class="row" style="height:3cm;">
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="colaborador.nomUcr"
+                            id="validationTextarea" name="Nombre" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese el nombre
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" placeholder="Apellido" [(ngModel)]="colaborador.apeUcr"
+                            id="validationTextarea" name="Apellido" required >
+                        <div class="invalid-feedback">
+                            Por favor ingrese un apellido
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height:3cm;">
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Correo</label>
+                        <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="colaborador.correoUcr"
+                            id="validationTextarea" name="Correo" required data-msg-email="Por favor ingresa un correo electrónico válido.">
+                        <div class="invalid-feedback">
+                            Por favor ingrese un correo y debe ser un correo electronico valido
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Usuario</ label>
+                        <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="colaborador.username"
+                            id="validationTextarea" required maxlength="10" name="Usuario" data-msg-maxlength="El usuario no puede tener más de 10 caracteres.">
+                        <div class="invalid-feedback">
+                            Por favor ingrese el usuario y debe tener menos de 10 caracteres
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height:3cm;">
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Contraseña"
+                            [(ngModel)]="colaborador.claveUcr" id="validationTextarea" name="Contraseña" required  maxlength="10" data-msg-maxlength="la contraseña no puede tener más de 10 caracteres.">
+                        <div class="invalid-feedback">
+                            Por favor ingrese una contraseña y debe tener menos de 10 caracteres
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Confirmar contraseña</label>
+                        <input type="password" class="form-control" placeholder="Verificar Contraseña"
+                            [(ngModel)]="colaborador.confirmClaveUcr" id="validationTextarea" name="VeriContraseña" required maxlength="10" data-msg-maxlength="la contraseña no puede tener más de 10 caracteres.">
+                        <div class="invalid-feedback">
+                            Verificación de la contraseña
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height:3cm;">
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Telefono</label>
+                        <input type="number" class="form-control" placeholder="Telefono"
+                            [(ngModel)]="colaborador.telefonoUcr" name="Telefono" id="validationTextarea" required >
+                        <div class="invalid-feedback">
+                            Por favor ingrese un telefono
+                        </div>
+                    </div>
 
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Numero de documento"
-              aria-label="Numero de documento"
-              [(ngModel)]="colaborador.numDocumentoUcr"
-              name="numDocumentoUcr"
-            />
-          </div>
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" data-date-format="aaaa/mm/dd" name="fecha" class="form-control"
+                            placeholder="Fecha de nacimiento" [(ngModel)]="colaborador.fechaNacimientoUcr"
+                            id="validationTextarea" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese la fecha de nacimiento
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height:3cm;">
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Tipo de documento
 
-          <div class="row">
-            <div class="col">
-              <label for="formFile" class="form-label">Seguridad Social</label>
-              <input
-                class="form-control"
-                type="file"
-                id="formFile"
-                (change)="cargaArchivosDocumentos($event)"
-              />
-            </div>
-          </div>
+                        </label>
+                        <select class="form-select" name="tipoDocumento" [(ngModel)]="colaborador.tipoDoc" required>
+                            <option [ngValue]="">Tipo de documento</option>
+                            <option [ngValue]="tipoDocumento" *ngFor="let tipoDocumento of tipoDocumentos">
+                                {{tipoDocumento.nombreTipoDocumento}}</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor ingrese tipo de documento
+                        </div>
+                    </div>
 
-          <div class="col">
-            <button
-              class="btn btn-primary"
-              role="button"
-              (click)="create()"
-              *ngIf="!colaborador.codUcr; else elseBlock"
-            >
-              Registrar
-            </button>
+                    <div class="col">
+                        <label for="validationTextarea" class="form-label">Numero de documento
+                        </label>
+                        <input type="number" class="form-control" name="numDocumento" placeholder="Numero de documento" [(ngModel)]="colaborador.numDocumentoUcr" id="validationTextarea" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese el numero de documento
+                        </div>
+                    </div>
 
-            <ng-template #elseBlock>
-              <button class="btn btn-primary" role="button" (click)="update()">
-                Editar
-              </button>
-            </ng-template>
-          </div>
+                </div>
+
+
+                <div class="row" style="height:2.3cm;">
+                    <div class="col">
+                        <label for="formFile" class="form-label">Seguridad Social</label>
+                        <input class="form-control" type="file" id="formFile"
+                            (change)="cargaArchivosSeguridadSocialColaboradores($event)">
+                    </div>
+
+                    <div class="col">
+                        <label for="formFile" class="form-label">Ingrese foto de la cedula</label>
+                        <input class="form-control" type="file" id="formFile"
+                            (change)="cargaArchivosCedulaColaboradores($event)">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <button class="btn btn-primary" role="button" (click)="create()"
+                        *ngIf="!colaborador.codUcr else elseBlock">Registrar</button>
+
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)="update()">Editar</button>
+                    </ng-template>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>

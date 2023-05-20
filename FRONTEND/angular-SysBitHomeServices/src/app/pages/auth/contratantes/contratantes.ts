@@ -6,9 +6,11 @@ export class Contratante {
     apeUce:string;
     correoUce:string;
     claveUce:string;
+    confirmClaveUce:string;
     telefonoUce:number;
     numDocumentoUce:number;
-    usuarioUce:string;
+    username:string;
     fechaNacimientoUce:string;
     tipoDocContratantes:TipoDocumento;
+    supervisados:String[]=[];
 }

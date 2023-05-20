@@ -6,10 +6,12 @@ export class Colaborador {
     apeUcr:string;
     correoUcr:string;
     claveUcr:string;
+    confirmClaveUcr:string;
     telefonoUcr:number;
     cuentaBancaria:number;
     numDocumentoUcr:number;
-    usuarioUcr:string;
+    username:string;
     fechaNacimientoUcr:string;
     tipoDoc:TipoDocumento;
+    supervisados:String[] = [];
 }

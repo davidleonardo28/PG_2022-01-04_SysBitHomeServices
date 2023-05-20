@@ -14,6 +14,8 @@
               <th> Fecha Nacimiento Contratante </th>
               <th> Numero de documento</th>
               <th> Tipo de documento </th>
+              <th> Editar </th>
+              <th> Documentos verificados </th>
           </tr>
       </thead>
       <tbody>
@@ -22,11 +24,21 @@
               <td>{{contratante.nomUce}}</td>
               <td>{{contratante.apeUce}}</td>
               <td>{{contratante.correoUce}}</td>
-              <td>{{contratante.usuarioUce}}</td>
+              <td>{{contratante.username}}</td>
               <td>{{contratante.telefonoUce}}</td>
               <td>{{contratante.fechaNacimientoUce}}</td>
               <td>{{contratante.numDocumentoUce}}</td>
               <td>{{contratante.tipoDocContratantes.nombreTipoDocumento}}</td>
+              <td>
+                <button class="btn" name="button" [routerLink]="['/registro/contratantes/editar',contratante.codUce]">
+                  <img src="../../../assets/img/editar.jpg" style="width: 70px; height: 75px;">
+                </button>
+                </td>
+                <td>
+                  <button class="btn">
+                    <img src="../../../assets/img/autorización.jpg" style="width: 70px; height: 75px;">
+                  </button>
+                </td>
           </tr>
       </tbody>
     </table>

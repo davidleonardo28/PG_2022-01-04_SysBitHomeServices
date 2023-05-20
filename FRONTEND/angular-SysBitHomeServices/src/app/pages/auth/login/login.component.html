@@ -1,0 +1,77 @@
+
+<div class="container">
+  <h2>Login</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Seleccionar tipo de usuario</label>
+        <select class="form-control" (change)="onUserTypeSelected($event.target.value)">
+          <option value="">Seleccionar</option>
+          <option value="contratante">Contratante</option>
+          <option value="colaborador">Colaborador</option>
+          <option value="administrador">Administrador</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario de login del contratante -->
+  <div *ngIf="showContratanteForm">
+    <form method="post">
+      <div class="row" style="height:1.5cm;">
+        <div class="form-group ">
+          <input [(ngModel)]="contratante.username" type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario" autofocus required>
+        </div>
+      </div>
+  
+      <div class="row" style="height: 1.5cm;">
+        <div class="form-group">
+          <input [(ngModel)]="contratante.claveUce" type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
+        </div>
+      </div>
+        <div class="form-group">
+          <input (click)="loginContratante()" type="submit" class="btn btn-lg btn-primary btn-block" value="Inciar sesión">
+        </div>
+      </form>
+  </div>
+
+  <!-- Formulario de login del colaborador -->
+  <div *ngIf="showColaboradorForm">
+    <form method="post">
+      <div class="row" style="height:1.5cm;">
+        <div class="form-group ">
+          <input [(ngModel)]="colaborador.username" type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario" autofocus required>
+        </div>
+      </div>
+  
+      <div class="row" style="height: 1.5cm;">
+        <div class="form-group">
+          <input [(ngModel)]="colaborador.claveUcr" type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
+        </div>
+      </div>
+        <div class="form-group">
+          <input (click)="loginColaborador()" type="submit" class="btn btn-lg btn-primary btn-block" value="Inciar sesión">
+        </div>
+      </form>
+  </div>
+
+    <!-- Formulario de login del administrador -->
+    <div *ngIf="showAdministradorForm">
+      <form method="post">
+        <div class="row" style="height:1.5cm;">
+          <div class="form-group ">
+            <input [(ngModel)]="administrador.username" type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario" autofocus required>
+          </div>
+        </div>
+    
+        <div class="row" style="height: 1.5cm;">
+          <div class="form-group">
+            <input [(ngModel)]="administrador.claveAdmin" type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
+          </div>
+        </div>
+          <div class="form-group">
+            <input (click)="loginAdministrador()" type="submit" class="btn btn-lg btn-primary btn-block" value="Inciar sesión">
+          </div>
+        </form>
+    </div>
+</div>

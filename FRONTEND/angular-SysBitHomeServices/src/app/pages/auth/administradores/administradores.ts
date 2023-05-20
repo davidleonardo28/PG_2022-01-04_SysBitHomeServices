@@ -8,6 +8,7 @@ export class Administrador {
     claveAdmin:string;
     telefonoAdmin:number;
     numDocumentoAdmin:number;
-    usuarioAdmin:string;
-    tipoDoc:TipoDocumento;
+    username:string;
+    docAdmin:TipoDocumento;
+    supervisados:String[] = [];
 }

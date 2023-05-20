@@ -11,10 +11,12 @@
               <th> Correo Colaborador </th>
               <th> Usuario Colaborador </th>
               <th> Telefono Colaborador </th>
-              <th> Cuenta Bancaria</th>
               <th> Fecha Nacimiento Colaborador </th>
               <th> Numero de documento</th>
               <th> Tipo de documento </th>
+              <th> Editar </th>
+              <th> Eliminar </th>
+              <th> Documentos verificados </th>
           </tr>
       </thead>
       <tbody>
@@ -23,12 +25,26 @@
               <td>{{colaborador.nomUcr}}</td>
               <td>{{colaborador.apeUcr}}</td>
               <td>{{colaborador.correoUcr}}</td>
-              <td>{{colaborador.usuarioUcr}}</td>
+              <td>{{colaborador.username}}</td>
               <td>{{colaborador.telefonoUcr}}</td>
-              <td>{{colaborador.cuentaBancaria}}</td>
               <td>{{colaborador.fechaNacimientoUcr}}</td>
               <td>{{colaborador.numDocumentoUcr}}</td>
               <td>{{colaborador.tipoDoc.nombreTipoDocumento}}</td>
+              <td>
+                <button class="btn" name="button" [routerLink]="['/registro/colaboradores/editar',colaborador.codUcr]"  >
+                  <img src="../../../assets/img/editar.jpg" style="width: 70px; height: 75px;">
+                </button>
+                </td>
+                <td>
+                  <button class="btn">
+                    <img src="../../../assets/img/eliminar.jpg" style="width: 70px; height: 75px;">
+                  </button>
+                </td>
+                <td>
+                  <button class="btn">
+                    <img src="../../../assets/img/autorización.jpg" style="width: 70px; height: 75px;">
+                  </button>
+                </td>
           </tr>
       </tbody>
     </table>

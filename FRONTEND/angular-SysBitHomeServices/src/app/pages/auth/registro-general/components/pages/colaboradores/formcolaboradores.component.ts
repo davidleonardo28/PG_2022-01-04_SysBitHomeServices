@@ -22,16 +22,21 @@ export class FormColaboradoresComponent implements OnInit {
 
     ngOnInit() {
       this.colaboradorService.getTipo_documento().subscribe(tipoDocumento => {this.tipoDocumentos = tipoDocumento;console.log(tipoDocumento)})
+      this.cargarColaborador();
+      console.log("Componente")
     }
 
     public create(): void{
      this.colaboradorService.create(this.colaborador).subscribe(
       colaborador => {
-        this.router.navigate(['./home'])
-        swal('Colaborador Nuevo', `El Colaborador se ha creado exitosamente`)
+        if(colaborador.claveUcr === colaborador.confirmClaveUcr){
+          this.router.navigate(['./home'])
+          swal('Colaborador Nuevo', `El Colaborador se ha creado exitosamente`, 'success')
+        }else{
+          swal('Contraseña invalida', 'La verificación de la contraseña es erronea', 'error')
+        }
       }
         )
-
     }
 
     public cargarColaborador(): void{
@@ -44,34 +49,50 @@ export class FormColaboradoresComponent implements OnInit {
       })
 
     }
-
+ 
     public update(): void{
       this.colaboradorService.update(this.colaborador).subscribe(colaborador =>{
         this.router.navigate(['./home'])
-        swal('Colaborador Editado', `El Colaborador ha sido editado exitosamente`)
+        swal('Colaborador Editado', `El Colaborador ha sido editado exitosamente`, 'success')
 
       })
     }
 
-    cargaArchivosDocumentos($event: any){
+    cargaArchivosCedulaColaboradores($event: any){
 
       const file = $event.target.files[0];
       console.log(file);
 
-      const fileRef = ref(this.storage, `Colaboradores/ArchivoDocumento/${file.name}`);
+      const fileRef = ref(this.storage, `Colaboradores/Cedula/${file.name}`);
 
       uploadBytes(fileRef, file)
       .then(response => {
         console.log(response)})
-        swal('Archivo Documento', 'El Archivo ha sido guardado')
+        swal('Archivo Documento', 'El Archivo ha sido guardado', 'success')
       .catch(error => console.log(error)
       )
 
     }
 
-    getArchivos(){
+    cargaArchivosSeguridadSocialColaboradores($event: any){
 
-      const fileRef = ref(this.storage, 'Colaboradores/ArchivoDocumento');
+      const file = $event.target.files[0];
+      console.log(file);
+
+      const fileRef = ref(this.storage, `Colaboradores/SeguridadSocial/${file.name}`);
+
+      uploadBytes(fileRef, file)
+      .then(response => {
+        console.log(response)})
+        swal('Archivo Documento', 'El Archivo ha sido guardado', 'success')
+      .catch(error => console.log(error)
+      )
+
+    }
+
+    getArchivosCedula(){
+
+      const fileRef = ref(this.storage, 'Colaboradores/Cedula');
 
       listAll(fileRef)
       .then(async response => {
@@ -80,14 +101,10 @@ export class FormColaboradoresComponent implements OnInit {
       for(let item of response.items){
        const url = await getDownloadURL(item);
        this.archivoDocumento.push(url);
-
-
       }
     }
       )
       .catch(error => console.log(error));
 
     }
-
-
 }

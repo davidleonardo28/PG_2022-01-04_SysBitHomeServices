@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () =>
-      import('./pages/auth/registro-general/registro-general.module').then((m) => m.RegistoGeneralModule),
+      import('./pages/auth/registro-general/registro-general.module').then((m) => m.RegistroGeneralModule),
   },
   {
     path: 'pagos',
@@ -67,6 +67,12 @@ const routes: Routes = [
       import('./pages/auth/sign-up/sign-up.module').then((m) => m.SignUpModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/auth/login/login.module').then((m) => m.LoginModule),
+  }, 
+ 
 
 
   // { path: '**', redirectTo: '/home', pathMatch: 'full' },

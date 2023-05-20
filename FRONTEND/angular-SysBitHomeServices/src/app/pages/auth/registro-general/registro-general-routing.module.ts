@@ -11,11 +11,12 @@ const routes: Routes = [
   {
     path: '' ,
     children: [
-      { path: '', component: RegistroComponent },
+      { path: 'registro', component: RegistroComponent },
       { path: 'contratantes/registro', component: FormContratantesComponent },
       { path: 'colaboradores/registro', component: FormColaboradoresComponent },
-      // { path: 'propiedades', component: PropiedadesComponent },
-      // { path: '', redirectTo: 'registro' },
+      { path: 'colaboradores/editar/:id', component: FormColaboradoresComponent },
+      { path: 'contratantes/editar/:id', component: FormContratantesComponent },
+
     ]
   }
 

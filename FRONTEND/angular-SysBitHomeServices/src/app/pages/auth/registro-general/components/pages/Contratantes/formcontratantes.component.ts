@@ -4,6 +4,7 @@ import { TipoDocumento } from '../../../../tipoDocumento/tipoDocumento';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Storage, ref, uploadBytes, listAll, getDownloadURL} from '@angular/fire/storage';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formcontratantes',
@@ -38,10 +39,20 @@ export class FormContratantesComponent implements OnInit {
 
     public create(): void{
      this.contratanteService.create(this.contratante).subscribe(
-    contratante => this.router.navigate(['./home']))
-     console.log(this.contratante)
+    contratante =>{ 
+    if(contratante != null){
+      if(contratante.claveUce === contratante.confirmClaveUce){
+      this.router.navigate(['./home'])
+      swal('Contratante Nuevo', `El Colaborador se ha creado exitosamente`, 'success')
+      }else{
+        swal('Contratante invalida', 'La verificación de la contraseña es erronea', 'error')
+      }
+    }else{
+      swal('Información', 'Ingresar todos los campos para completar el registro', 'info')
     }
-
+  })
+     console.log(this.contratante)
+  }
     public update(): void{
       this.contratanteService.update(this.contratante).subscribe(contratante =>{
         this.router.navigate(['./home'])
@@ -53,7 +64,7 @@ export class FormContratantesComponent implements OnInit {
       const file = $event.target.files[0];
       console.log(file);
 
-      const fileRef = ref(this.storage, `DocumentosContratantes/${file.name}`);
+      const fileRef = ref(this.storage, `Contratantes/Cedula/${file.name}`);
 
       uploadBytes(fileRef, file)
       .then(response => console.log(response))
@@ -62,7 +73,7 @@ export class FormContratantesComponent implements OnInit {
 
     getArchivos(){
 
-      const fileRef = ref(this.storage, 'DocumentosContratantes');
+      const fileRef = ref(this.storage, 'Contratantes/Cedula');
 
       listAll(fileRef)
       .then(async response => {

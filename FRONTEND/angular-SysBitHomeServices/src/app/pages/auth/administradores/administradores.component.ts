@@ -14,7 +14,5 @@ export class AdministradoresComponent implements OnInit {
 ngOnInit(): void {
   this.administradorService.getAdministrador().subscribe(administradores =>
     this.administradores = administradores)
-
 }
-
 }

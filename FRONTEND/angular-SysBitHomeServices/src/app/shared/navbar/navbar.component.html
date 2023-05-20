@@ -1,72 +1,72 @@
 <header class="p-3 bg-dark text-white">
   <div class="container">
-    <div
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-    >
-      <a
-        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-        href="home"
-        >SysBitHomeServices
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="home">SysBitHomeServices
 
-        <svg
-          class="bi me-2"
-          width="40"
-          height="32"
-          role="img"
-          aria-label="Bootstrap"
-        >
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
           <use xlink:href="#bootstrap" />
         </svg>
       </a>
       <ng-container *ngIf="(user$ | async) === null; else logOutTemplate">
         <div class="text-end">
-          <button
-            type="button"
-            class="btn btn-outline-light me-2"
-            [routerLink]="['/sign-in']"
-            routerLinkActive="router-link-active"
-          >
+          <button *ngIf="!loginService.isAuthenticated()" type="button" class="btn btn-outline-light me-2"
+            [routerLink]="['/login']" routerLinkActive="router-link-active" style="position: absolute;left: 80%;top: 3%">
             Login
           </button>
-          <button
-            type="button"
-            class="btn btn-warning"
-            [routerLink]="['/sign-up']"
-            routerLinkActive="router-link-active me-2"
-          >
+          <button *ngIf="!loginService.isAuthenticated()" type="button" class="btn btn-warning" [routerLink]="['registro/registro']" 
+            routerLinkActive="router-link-active me-2" style="position: absolute;left: 87%;top: 3%">
             Registrarse
           </button>
+          <button *ngIf="loginService.isAuthenticated()" type="button" class="btn btn-primary" [routerLink]="['/sign-in']"
+            routerLinkActive="router-link-active me-1" style="position: absolute;left: 80%;" (click)="logout()">
+            Cerrar Sesión
+          </button>
+          <ul *ngIf="loginService.isAuthenticated()" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a [routerLink]="['/administradores']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white" *ngIf="loginService.hasRole('ROLE_ADMIN')">Administradores</a>
+          </li>
+          <li>
+            <a [routerLink]="['/colaboradores']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white" *ngIf="loginService.hasRole('ROLE_ADMIN')">Colaboradores</a>
+          </li>
+          <li>
+            <a [routerLink]="['/contratantes']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white" *ngIf="loginService.hasRole('ROLE_ADMIN')">Contratantes</a>
+          </li>
+            <li>
+              <a class="nav-link px-1 text-white" aria-current="page" [routerLink]="['/servicios']"
+                routerLinkActive="router-link-active" *ngIf="loginService.hasRole('ROLE_UCR') || loginService.hasRole('ROLE_UCE')">Servicios</a>
+            </li>
+            <li>
+              <a class="nav-link px-1 text-white" [routerLink]="['/localizacion']"
+                routerLinkActive="router-link-active" *ngIf="loginService.hasRole('ROLE_UCR') || loginService.hasRole('ROLE_UCE')" >Localización</a>
+            </li>
+            <li>
+              <a class="nav-link px-1 text-white" aria-current="page" [routerLink]="['/tyc']"
+                routerLinkActive="router-link-active">Términos y condiciones</a>
+            </li>
+            <li>
+              <a [routerLink]="['/pagos']" routerLinkActive="router-link-active me-2"
+                class="nav-link px-1 text-white" *ngIf="loginService.hasRole('ROLE_UCR') || loginService.hasRole('ROLE_UCE') " >Pagos</a>
+            </li>
+          </ul>
+          
         </div>
       </ng-container>
       <ng-template #logOutTemplate>
-        <button
-          type="button"
-          class="btn btn-primary"
-          (click)="onLogout()"
-          [routerLink]="['/sign-in']"
-          routerLinkActive="router-link-active me-1"
-        >
+        <button type="button" class="btn btn-primary" (click)="onLogout()" [routerLink]="['/sign-in']"
+          routerLinkActive="router-link-active me-1">
           Cerrar Sesión
         </button>
-        <ul
-          class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-        >
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <a
-              class="nav-link px-1 text-white"
-              aria-current="page"
-              [routerLink]="['/servicios']"
-              routerLinkActive="router-link-active"
-              >Servicios</a
-            >
+            <a class="nav-link px-1 text-white" aria-current="page" [routerLink]="['/servicios']"
+              routerLinkActive="router-link-active">Servicios</a>
           </li>
           <li>
-            <a
-              class="nav-link px-1 text-white"
-              [routerLink]="['/localizacion']"
-              routerLinkActive="router-link-active"
-              >Localización</a
-            >
+            <a class="nav-link px-1 text-white" [routerLink]="['/localizacion']"
+              routerLinkActive="router-link-active">Localización</a>
           </li>
           <!-- <li>
             <a
@@ -77,71 +77,35 @@
             >
           </li> -->
           <li>
-            <a
-              class="nav-link px-1 text-white"
-              aria-current="page"
-              [routerLink]="['/tyc']"
-              routerLinkActive="router-link-active"
-              >Términos y condiciones</a
-            >
+            <a class="nav-link px-1 text-white" aria-current="page" [routerLink]="['/tyc']"
+              routerLinkActive="router-link-active">Términos y condiciones</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/pagos']"
-              routerLinkActive="router-link-active me-2"
-              class="nav-link px-1 text-white"
-              >Pagos</a
-            >
+            <a [routerLink]="['/pagos']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white">Pagos</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/registro']"
-              routerLinkActive="router-link-active me-2"
-              class="nav-link px-1 text-white"
-              >Registro</a
-            >
+            <a [routerLink]="['/registro']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white">Registro</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/administradores']"
-              routerLinkActive="router-link-active me-2"
-              class="nav-link px-1 text-white"
-              >Administradores</a
-            >
+            <a [routerLink]="['/administradores']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white">Administradores</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/colaboradores']"
-              routerLinkActive="router-link-active me-2"
-              class="nav-link px-1 text-white"
-              >Colaboradores</a
-            >
+            <a [routerLink]="['/colaboradores']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white">Colaboradores</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/contratantes']"
-              routerLinkActive="router-link-active me-2"
-              class="nav-link px-1 text-white"
-              >Contratantes</a
-            >
+            <a [routerLink]="['/contratantes']" routerLinkActive="router-link-active me-2"
+              class="nav-link px-1 text-white">Contratantes</a>
           </li>
         </ul>
 
         <div class="dropdown text-end">
-          <a
-            href="#"
-            class="d-block link-dark text-decoration-none dropdown-toggle"
-            id="dropdownUser1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <img
-              src="https://github.com/mdo.png"
-              alt="mdo"
-              width="32"
-              height="32"
-              class="rounded-circle"
-            />
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" />
           </a>
         </div>
       </ng-template>

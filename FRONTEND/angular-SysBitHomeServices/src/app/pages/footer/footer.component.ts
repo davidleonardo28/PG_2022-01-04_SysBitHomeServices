@@ -12,4 +12,9 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+  goToUrl(): void {
+    // window.location.href = 'https://mpago.li/1dFnchx';
+    window.open('https://wa.me/message/PT7ESJEIP55UE1', '_blank');
+  }
 }

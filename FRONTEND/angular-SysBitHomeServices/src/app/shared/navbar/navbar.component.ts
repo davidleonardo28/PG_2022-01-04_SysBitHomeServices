@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '@auth/login/login.service';
 import { AuthService } from '@auth/services/auth.services';
+import swal from 'sweetalert2';
 
 interface MenuUsers {
   ruta: string;
@@ -13,7 +16,7 @@ interface MenuUsers {
 export class NavbarComponent {
   user$ = this.authSvc.user$;
 
-  constructor(private readonly authSvc: AuthService) { }
+  constructor(private readonly authSvc: AuthService, private loginService: LoginService, private router:Router) { }
 
   async onLogout(): Promise<void> {
     try {
@@ -37,4 +40,11 @@ export class NavbarComponent {
       nombre: 'Contratantes'
     },
   ];
+
+  logout():void{
+    let username = this.loginService.administrador.username;
+    this.loginService.logout();
+    swal('Login', `Hola, ${username}, has cerrado sesión con exito`,'success');
+    this.router.navigate(['/login'])
+  }
 }

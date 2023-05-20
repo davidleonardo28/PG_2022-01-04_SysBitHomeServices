@@ -35,6 +35,8 @@ import { ContratantesService } from '@auth/contratantes/contratante.service';
 import { RouterModule, Routes } from '@angular/router';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { LoginService } from '@auth/login/login.service';
+import { RegistroGeneralRoutingModule } from '@auth/registro-general/registro-general-routing.module';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent],
@@ -69,6 +71,8 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     RouterModule,
+    RegistroGeneralRoutingModule,
+    AppRoutingModule
   ],
   providers: [
     MatDatepickerModule,
@@ -77,6 +81,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     CargarScriptsService,
     ColaboradorService,
     ContratantesService,
+    LoginService
   ],
   bootstrap: [AppComponent, MatDatepickerModule],
 })

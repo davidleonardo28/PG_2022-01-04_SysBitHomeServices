@@ -23,4 +23,6 @@ export class ContratantesComponent implements OnInit {
 
   }
 
+  
+
 }
