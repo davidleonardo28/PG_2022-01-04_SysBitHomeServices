@@ -19,6 +19,8 @@ Con esto se tiene en cuenta que la tecnología de la aplicación será de median
 
 
 Desarrollado por : 
-DAVID LEONARDO BARRERA LÓPEZ 
-SEBASTIÁN CAMILO NIETO CAMACHO
-DIEGO MAURICIO VELOZA MARTÍNEZ
+--> David Leonardo Barrera Lopez
+--> Sebastian Camilo Nieto Camacho
+--> Diego Mauricio Veloza Martinez
+
+
