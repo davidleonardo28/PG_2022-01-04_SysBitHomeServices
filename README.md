@@ -1,3 +1,13 @@
+# ComputaciónCientífica_Taller2C2
+
+Universidad El Bosque 🌳, Facultad de Ingeniería - Ingeniería de Sistemas ⌨.
+
+Integrantes: Sebastián Camilo Nieto Camacho, Diego Mauricio Veloza Martínez, Nicolás Andrés Garzón Bautista.
+
+Presentado a: Prof. Fabián Camilo Peña.
+<img src="https://user-images.githubusercontent.com/90856580/163276796-f22825b3-8983-4c42-bcd5-5f7b259e3de0.png" width="350px" hight="100px">
+
+
 # PG_2022-01-04_SysBitHomeServices 
 
 Objetivo General:
