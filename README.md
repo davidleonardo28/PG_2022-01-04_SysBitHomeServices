@@ -1,4 +1,4 @@
-# ComputaciónCientífica_Taller2C2
+# PG_2022-01-04_SysBitHomeServices 
 
 Universidad El Bosque 🌳, Facultad de Ingeniería - Ingeniería de Sistemas ⌨.
 
@@ -7,8 +7,6 @@ Integrantes: David Leonardo Barrera López, Sebastián Camilo Nieto Camacho, Die
 Proyecto de Grado - SysBitHomeServices.
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Logo_de_la_Universidad_El_Bosque.svg/1130px-Logo_de_la_Universidad_El_Bosque.svg.png" width="350px" hight="100px">
 
-
-# PG_2022-01-04_SysBitHomeServices 
 
 Objetivo General:
 Desarrollar e implementar un sistema de información web que permita la oferta y adquisición de servicios laborales domésticos en el territorio comprendido por Bogotá DC y sus alrededores, cumpliendo las disposiciones de contratación laboral establecidas por el Ministerio de Trabajo, con el fin de disminuir la variable de tiempo en los procesos de contratación de estos servicios.
