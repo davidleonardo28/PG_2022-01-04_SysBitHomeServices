@@ -1,7 +1,9 @@
 <header class="p-3 bg-dark text-white">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="home">SysBitHomeServices
+      <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="home">
+
+        <h1 class="estilo_titulo">SysBitHomeServices</h1>
 
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
           <use xlink:href="#bootstrap" />
@@ -10,8 +12,8 @@
       <ng-container *ngIf="(user$ | async) === null; else logOutTemplate">
         <div class="text-end">
           <button *ngIf="!loginService.isAuthenticated()" type="button" class="btn btn-outline-light me-2"
-            [routerLink]="['/login']" routerLinkActive="router-link-active" style="position: absolute;left: 80%;top: 3%">
-            Login
+            [routerLink]="['/login']" routerLinkActive="router-link-active" style="position: absolute;left: 78%;top: 3%">
+            Iniciar Sesión
           </button>
           <button *ngIf="!loginService.isAuthenticated()" type="button" class="btn btn-warning" [routerLink]="['registro/registro']" 
             routerLinkActive="router-link-active me-2" style="position: absolute;left: 87%;top: 3%">
@@ -39,16 +41,8 @@
                 routerLinkActive="router-link-active" *ngIf="loginService.hasRole('ROLE_UCR') || loginService.hasRole('ROLE_UCE')">Servicios</a>
             </li>
             <li>
-              <a class="nav-link px-1 text-white" [routerLink]="['/localizacion']"
-                routerLinkActive="router-link-active" *ngIf="loginService.hasRole('ROLE_UCR') || loginService.hasRole('ROLE_UCE')" >Localización</a>
-            </li>
-            <li>
               <a class="nav-link px-1 text-white" aria-current="page" [routerLink]="['/tyc']"
                 routerLinkActive="router-link-active">Términos y condiciones</a>
-            </li>
-            <li>
-              <a [routerLink]="['/pagos']" routerLinkActive="router-link-active me-2"
-                class="nav-link px-1 text-white" *ngIf="loginService.hasRole('ROLE_UCR') || loginService.hasRole('ROLE_UCE') " >Pagos</a>
             </li>
           </ul>
           

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PropiedadesComponent } from './propiedades.component';
+import { FullScreen3Component } from './full-screen3.component';
 
-describe('PropiedadesComponent', () => {
-  let component: PropiedadesComponent;
-  let fixture: ComponentFixture<PropiedadesComponent>;
+describe('FullScreenComponent', () => {
+  let component: FullScreen3Component;
+  let fixture: ComponentFixture<FullScreen3Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PropiedadesComponent ]
+      declarations: [ FullScreen3Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PropiedadesComponent);
+    fixture = TestBed.createComponent(FullScreen3Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

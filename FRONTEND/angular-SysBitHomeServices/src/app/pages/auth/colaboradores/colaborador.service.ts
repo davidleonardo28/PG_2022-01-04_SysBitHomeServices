@@ -5,7 +5,7 @@ import { TipoDocumento } from '../tipoDocumento/tipoDocumento';
 import { Colaborador } from './colaboradores';
 import { Router } from '@angular/router';
 import { LoginService } from '@auth/login/login.service';
-import { environment } from '@env/environment';
+import { environment } from '@env/environment.prod';
 
 @Injectable()
 export class ColaboradorService {

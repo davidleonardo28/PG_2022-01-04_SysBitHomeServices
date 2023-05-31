@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Administrador } from '@auth/administradores/administradores';
 import { Contratante } from '@auth/contratantes/contratantes';
 import { Colaborador } from '@auth/colaboradores/colaboradores';
+import { environment } from '@env/environment.prod';
 
 @Injectable()
 export class LoginService {
@@ -56,8 +57,8 @@ export class LoginService {
     constructor(private http : HttpClient){}
 
     loginAdministrador(administrador:Administrador):Observable<any>{
-
-        const urlEndpoint = 'http://sysbithomeservices-backend-v1-env-1.eba-akv9utb2.us-east-2.elasticbeanstalk.com/oauth/token'; 
+        
+        const urlEndpoint = `${environment.backendUrl}/oauth/token`; 
         const credenciales = btoa('angularapp' + ':' + 'angular12345');
         const httpHeaders = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded',
         'Authorization':'Basic ' + credenciales})
@@ -73,7 +74,7 @@ export class LoginService {
 
     loginColaborador(colaborador:Colaborador):Observable<any>{
 
-        const urlEndpoint = 'http://sysbithomeservices-backend-v1-env-1.eba-akv9utb2.us-east-2.elasticbeanstalk.com/oauth/token'; 
+        const urlEndpoint = `${environment.backendUrl}/oauth/token`; 
         const credenciales = btoa('angularapp' + ':' + 'angular12345');
         const httpHeaders = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded',
         'Authorization':'Basic ' + credenciales})
@@ -90,7 +91,7 @@ export class LoginService {
     
     loginContratante(contratante:Contratante):Observable<any>{
 
-        const urlEndpoint = 'http://sysbithomeservices-backend-v1-env-1.eba-akv9utb2.us-east-2.elasticbeanstalk.com/oauth/token'; 
+        const urlEndpoint = `${environment.backendUrl}/oauth/token`; 
         const credenciales = btoa('angularapp' + ':' + 'angular12345');
         const httpHeaders = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded',
         'Authorization':'Basic ' + credenciales})

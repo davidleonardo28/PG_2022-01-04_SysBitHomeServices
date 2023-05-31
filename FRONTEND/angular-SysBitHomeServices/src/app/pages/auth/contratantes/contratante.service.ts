@@ -5,12 +5,13 @@ import { TipoDocumento } from '../tipoDocumento/tipoDocumento';
 import { Contratante } from './contratantes';
 import { LoginService } from '@auth/login/login.service';
 import { Router } from '@angular/router';
+import { environment } from '@env/environment.prod';
 
 @Injectable()
 export class ContratantesService {
 
-  private urlEndPoint:string = 'http://sysbithomeservices-backend-v1-env-1.eba-akv9utb2.us-east-2.elasticbeanstalk.com/api/contratentes'
-  private urlEndPointTipoDoc:string = 'http://sysbithomeservices-backend-v1-env-1.eba-akv9utb2.us-east-2.elasticbeanstalk.com/api/TipoDocumentos'
+  private urlEndPoint:string = `${environment.backendUrl}/api/contratentes`
+  private urlEndPointTipoDoc:string = `${environment.backendUrl}/api/TipoDocumentos`
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
   constructor(private http: HttpClient, private router: Router, private loginService: LoginService) {
